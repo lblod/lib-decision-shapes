@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "declaration": true,            
+    "outDir": "./dist"
+  },
+  "include": ["./src/**/*.ts", "src/shapes/notulen.js"],
+  "exclude": ["node_modules", "dist", "./src/test/**/*"]
+}

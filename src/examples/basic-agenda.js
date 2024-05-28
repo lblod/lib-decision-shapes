@@ -1,4 +1,4 @@
-<html lang="nl">
+const basicAgendaExample = `<html lang="nl">
 
 <head>
     <meta charset="utf-8">
@@ -119,4 +119,5 @@
         </main>
     </div>
 </body>
-</html>
+</html>`
+module.exports = basicAgendaExample;

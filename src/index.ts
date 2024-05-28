@@ -1,39 +1,47 @@
-import * as fs from 'fs';
+const basicAgendaShape = require('./shapes/basic-agenda.js');
+const decisionListShape = require('./shapes/decision-list.js');
+const notulenShape = require('./shapes/notulen.js');
 
-export function getShapeOfDocumentType(type: string): string {
+const basicAgendaExample = require('./examples/basic-agenda.js');
+const decisionListExample = require('./examples/decision-list.js');
+const notulenExample = require('./examples/notulen.js');
+
+function getShapeOfDocumentType(type: string): string {
     const typeLowerCase = type.toLowerCase();
     switch (typeLowerCase) {
         case 'https://data.vlaanderen.be/id/concept/BesluitDocumentType/8e791b27-7600-4577-b24e-c7c29e0eb773':
         case 'notulen': {
-          return fs.readFileSync('./shapes/notulen.ttl').toString();
+          return notulenShape;
         }
         case 'https://data.vlaanderen.be/id/concept/BesluitDocumentType/3fa67785-ffdc-4b30-8880-2b99d97b4dee':
         case 'besluitenlijst': {
-          return fs.readFileSync('./shapes/decision-list.ttl').toString();
+          return decisionListShape;
         }
         case 'https://data.vlaanderen.be/id/concept/BesluitDocumentType/13fefad6-a9d6-4025-83b5-e4cbee3a8965': 
         case 'agenda': {
-          return fs.readFileSync('./shapes/basic-agenda.ttl').toString();
+          return basicAgendaShape;
         }
     };
     throw Error(`No SHACL file found for document type: ${type}.`)
 }
 
-export function getHTMLExampleOfDocumentType(type: string): string {
+function getHTMLExampleOfDocumentType(type: string): string {
     const typeLowerCase = type.toLowerCase();
     switch (typeLowerCase) {
         case 'https://data.vlaanderen.be/id/concept/BesluitDocumentType/8e791b27-7600-4577-b24e-c7c29e0eb773':
         case 'notulen': {
-          return fs.readFileSync('./examples/notulen.html').toString();
+          return notulenExample;
         }
         case 'https://data.vlaanderen.be/id/concept/BesluitDocumentType/3fa67785-ffdc-4b30-8880-2b99d97b4dee':
         case 'besluitenlijst': {
-          return fs.readFileSync('./examples/decision-list.html').toString();
+          return decisionListExample;
         }
         case 'https://data.vlaanderen.be/id/concept/BesluitDocumentType/13fefad6-a9d6-4025-83b5-e4cbee3a8965': 
         case 'agenda': {
-          return fs.readFileSync('./examples/basic-agenda.html').toString();
+          return basicAgendaExample;
         }
-    };
+    };  
     throw Error(`No HTML example found for document type: ${type}.`)
 }
+
+module.exports = { getShapeOfDocumentType, getHTMLExampleOfDocumentType };

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="nl"><head>
+const decisionListExample = `<!DOCTYPE html><html lang="nl"><head>
     <meta charset="utf-8">
     <title>Besluitenlijst van Gemeenteraad Kortenberg, zitting van 8 januari
         2024, 19:02 | Publicatie Gelinkt Notuleren</title>
@@ -205,7 +205,7 @@
                         ,              </p>             
                     <p>                
                         <strong>Gevolg:</strong>               
-                        <span property="besluit:gevolg" id="31">Goedgekeurd</span>``
+                        <span property="besluit:gevolg" id="31">Goedgekeurd</span>
                     </p>
                 </div>
             </div>
@@ -240,4 +240,6 @@
         </div>
     </div>
 </body>
-</html>
+</html>`
+
+module.exports = decisionListExample;

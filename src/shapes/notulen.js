@@ -1,4 +1,4 @@
-@prefix sh:      <http://www.w3.org/ns/shacl#> .
+const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 @prefix qb:      <http://purl.org/linked-data/cube#> .
 @prefix lblodBesluit:	<http://lblod.data.gift/vocabularies/besluit/> .
 
@@ -681,4 +681,6 @@
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '65'
 	] ;
-	sh:closed false .
+	sh:closed false .`
+
+module.exports = notulenShape;

@@ -1,8 +1,9 @@
 {
   "name": "lib-decision-shapes",
-  "version": "0.0.1",
+  "version": "0.0.9",
   "description": "NPM library to retrieve shapes of decisions and examples",
   "main": "dist/index.js",
+  "browser": "dist/index-browser.js",
   "tsup": {
     "entry": [
       "src/index.ts"
@@ -12,8 +13,14 @@
     "clean": true
   },
   "scripts": {
-    "build": "tsup",
-    "test": "jest"
+    "build": "npm run build:ts && npm run mkdirs && npm run copy",
+    "build:ts": "tsup",
+    "test": "jest",
+    "prepublish": "npm run build",
+    "mkdirs": "mkdir -p dist/ dist/examples dist/shapes",
+    "copy:examples": "cp -R src/examples/ dist/examples/",
+    "copy:shapes": "cp -R src/shapes/ dist/shapes/",
+    "copy": "npm run copy:shapes && npm run copy:examples"
   },
   "repository": {
     "type": "git",
@@ -27,6 +34,8 @@
   "homepage": "https://github.com/lblod/lib-decision-shapes#readme",
   "devDependencies": {
     "@types/jest": "^29.5.12",
+    "brfs": "^2.0.2",
+    "browserify": "^17.0.0",
     "jest": "^29.7.0",
     "tsup": "^8.0.2",
     "typescript": "^5.4.5"
