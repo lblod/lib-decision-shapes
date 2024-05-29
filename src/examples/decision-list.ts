@@ -1,4 +1,4 @@
-const decisionListExample = `<!DOCTYPE html><html lang="nl"><head>
+export const decisionListExample = `<!DOCTYPE html><html lang="nl"><head>
     <meta charset="utf-8">
     <title>Besluitenlijst van Gemeenteraad Kortenberg, zitting van 8 januari
         2024, 19:02 | Publicatie Gelinkt Notuleren</title>
@@ -241,5 +241,3 @@ const decisionListExample = `<!DOCTYPE html><html lang="nl"><head>
     </div>
 </body>
 </html>`
-
-module.exports = decisionListExample;

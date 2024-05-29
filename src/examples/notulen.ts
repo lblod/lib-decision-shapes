@@ -1,4 +1,4 @@
-const notulenExample = `<!DOCTYPE html>
+export const notulenExample = `<!DOCTYPE html>
 <html lang="nl" data-ember-extension="1">
 
 <head>
@@ -700,4 +700,3 @@ class="c-template-content c-template-content--treatment">
 </body>
 
 </html>`
-module.exports = notulenExample;

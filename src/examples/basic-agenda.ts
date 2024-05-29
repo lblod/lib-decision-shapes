@@ -1,4 +1,4 @@
-const basicAgendaExample = `<html lang="nl">
+export const basicAgendaExample = `<html lang="nl">
 
 <head>
     <meta charset="utf-8">
@@ -120,4 +120,3 @@ const basicAgendaExample = `<html lang="nl">
     </div>
 </body>
 </html>`
-module.exports = basicAgendaExample;

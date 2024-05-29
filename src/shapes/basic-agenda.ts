@@ -1,4 +1,4 @@
-const basicAgendaShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
+export const basicAgendaShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 @prefix qb:      <http://purl.org/linked-data/cube#> .
 @prefix lblodBesluit:	<http://lblod.data.gift/vocabularies/besluit/> .
 
@@ -247,5 +247,3 @@ const basicAgendaShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		lblodBesluit:usageNote '19'
 	] ;
 	sh:closed false .`
-
-module.exports = basicAgendaShape;

@@ -1,4 +1,4 @@
-const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
+export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 @prefix qb:      <http://purl.org/linked-data/cube#> .
 @prefix lblodBesluit:	<http://lblod.data.gift/vocabularies/besluit/> .
 
@@ -71,7 +71,7 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:class <http://xmlns.com/foaf/0.1/Document> ;
         sh:minCount 0 ;
 		sh:maxCount 1 ;
-		lblodBesluit:usageNote '7'
+		lblodBesluit:usageNote '1'
 	] ;
     sh:property [
 		sh:name "heeftAgenda" ;
@@ -97,7 +97,7 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:class <http://xmlns.com/foaf/0.1/Document> ;
         sh:minCount 0 ;
 		sh:maxCount 1 ;
-		lblodBesluit:usageNote '1'
+		lblodBesluit:usageNote '10'
 	] ;
   	sh:property [
 		sh:name "isGehoudenDoor" ;
@@ -134,7 +134,7 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         sh:path <http://mu.semte.ch/vocabularies/ext/heeftAfwezigeBijStart> ;
         sh:class <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
         sh:minCount 0 ;
-		lblodBesluit:usageNote '44'
+		lblodBesluit:usageNote '14'
     ] ;
     sh:property [
         sh:name "heeftVoorzitter" ;
@@ -144,7 +144,7 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         sh:class <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-		lblodBesluit:usageNote '14'
+		lblodBesluit:usageNote '15'
     ] ;
     sh:property [
         sh:name "heeftSecretaris" ;
@@ -154,7 +154,7 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         sh:class <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-		lblodBesluit:usageNote '15'
+		lblodBesluit:usageNote '16'
     ] ;
   	sh:closed false .
 <https://data.vlaanderen.be/shacl/besluit-publicatie#AgendapuntShape>
@@ -168,21 +168,21 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:class <http://data.vlaanderen.be/ns/besluit#Agendapunt> ;
         sh:minCount 0 ;
 		sh:maxCount 1 ;
-		lblodBesluit:usageNote '16'
+		lblodBesluit:usageNote '17'
 	] ;
-	sh:property [
+		sh:property [
 		sh:name "heeftOntwerpbesluit" ;
 		sh:description "Een (mogelijks nog aan te vullen of aan te passen) ontwerp voor het besluit dat uit dit agendapunt zou voortkomen." ;
 		sh:path <http://data.vlaanderen.be/ns/besluit#heeftOntwerpbesluit> ;
 		sh:class <http://xmlns.com/foaf/0.1/Document> ;
-		lblodBesluit:usageNote '42'
+		lblodBesluit:usageNote '66'
 	] ;
 	sh:property [
 		sh:name "refereertAan" ;
 		sh:description "Een ander agendapunt waarnaar verwezen wordt vanuit dit agendapunt." ;
 		sh:path <http://purl.org/dc/terms/references> ;
 		sh:class <http://data.vlaanderen.be/ns/besluit#Agendapunt> ;
-		lblodBesluit:usageNote '43'
+		lblodBesluit:usageNote '67'
 	] ;
 	sh:property [
 		sh:name "beschrijving" ;
@@ -192,7 +192,7 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
         sh:minCount 0 ;
 		sh:maxCount 1 ;
-		lblodBesluit:usageNote '17'
+		lblodBesluit:usageNote '18'
 	] ;
 	sh:property [
 		sh:name "geplandOpenbaar" ;
@@ -202,7 +202,7 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
-		lblodBesluit:usageNote '18'
+		lblodBesluit:usageNote '19'
 	] ;
 	sh:property [
 		sh:name "titel" ;
@@ -227,13 +227,81 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt> ;
 	sh:property [
+		sh:name "heeftOnderwerp" ;
+        lblodBesluit:maturiteitsniveau "Niveau 1" ;
+		sh:description "Het onderwerp van de activiteit." ;
+		sh:path <http://purl.org/dc/terms/subject> ;
+		sh:class <http://data.vlaanderen.be/ns/besluit#Agendapunt> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+		lblodBesluit:usageNote '22'
+	] ;
+	sh:property [
+		sh:name "gebeurtNa" ;
+        lblodBesluit:maturiteitsniveau "Niveau 1" ;
+		sh:description "Verwijzing naar het voorgaand behandeld agendapunt binnen dezelfde zitting. Laat toe om de volgorde van de behandelingen op te bouwen." ;
+		sh:path <http://data.vlaanderen.be/ns/besluit#gebeurtNa> ;
+		sh:class <http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt> ;
+        sh:minCount 0 ;
+		sh:maxCount 1 ;
+		lblodBesluit:usageNote '23'
+	] ;
+	sh:property [
+		sh:name "geeftAanleidingTot" ;
+        lblodBesluit:maturiteitsniveau "Niveau 1" ;
+		sh:description "Een besluit dat is opgemaakt naar aanleiding van de behandeling van het agendapunt." ;
+		sh:path <http://www.w3.org/ns/prov#generated> ;
+		sh:class <http://data.vlaanderen.be/ns/besluit#Besluit> ;
+        sh:minCount 0 ;
+		lblodBesluit:usageNote '24'
+	] ;
+	sh:property [
 		sh:name "heeftStemming" ;
         lblodBesluit:maturiteitsniveau "Niveau 1" ;
 		sh:description "Een stemming die plaatsvond tijdens de behandeling van het agendapunt." ;
 		sh:path <http://data.vlaanderen.be/ns/besluit#heeftStemming> ;
 		sh:class <http://data.vlaanderen.be/ns/besluit#Stemming> ;
         sh:minCount 0 ;
-		lblodBesluit:usageNote '22'
+		lblodBesluit:usageNote '25'
+	] ;
+    sh:property [
+		sh:name "heeftAanwezige" ;
+        lblodBesluit:maturiteitsniveau "Niveau 1" ;
+		sh:description "Een mandataris (van het orgaan dat de zitting houdt) die aanwezig was tijdens (een deel van) de behandeling." ;
+		sh:path <http://data.vlaanderen.be/ns/besluit#heeftAanwezige> ;
+		sh:class <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+		sh:minCount 1 ;
+		lblodBesluit:usageNote '26'
+	] ;
+    sh:property [
+		sh:name "heeftVoorzitter" ;
+        lblodBesluit:maturiteitsniveau "Niveau 1" ;
+		sh:description "De mandataris die de rol als voorzitter heeft gedurende de behandeling van het agendapunt." ;
+		sh:path <http://data.vlaanderen.be/ns/besluit#heeftVoorzitter> ;
+		sh:class <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+        sh:minCount 0 ;
+		sh:maxCount 1 ;
+		lblodBesluit:usageNote '27'
+	] ;
+    sh:property [
+		sh:name "heeftSecretaris" ;
+        lblodBesluit:maturiteitsniveau "Niveau 1" ;
+		sh:description "De mandataris die de rol van secretaris heeft gedurende de behandeling van het agendapunt." ;
+		sh:path <http://data.vlaanderen.be/ns/besluit#heeftSecretaris> ;
+		sh:class <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+        sh:minCount 0 ;
+		sh:maxCount 1 ;
+		lblodBesluit:usageNote '28'
+	] ;
+	sh:property [
+		sh:name "openbaar" ;
+        lblodBesluit:maturiteitsniveau "Niveau 1" ;
+		sh:description "Geeft aan of de bespreking effectief openbaar verlopen is." ;
+		sh:path <http://data.vlaanderen.be/ns/besluit#geheim> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+		lblodBesluit:usageNote '29'
 	] ;
 	sh:closed false .
 <https://data.vlaanderen.be/shacl/besluit-publicatie#BesluitShape>
@@ -247,7 +315,17 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
         sh:minCount 0 ;
 		sh:maxCount 1 ;
-		lblodBesluit:usageNote '23'
+		lblodBesluit:usageNote '30'
+	] ;
+    sh:property [
+		sh:name "inhoud" ;
+        lblodBesluit:maturiteitsniveau "Niveau 1" ;
+		sh:description "De beschrijving van de beoogde rechtsgevolgen, het zogenaamde beschikkend gedeelte." ;
+		sh:path <http://www.w3.org/ns/prov#value> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+		lblodBesluit:usageNote '31'
 	] ;
     sh:property [
 		sh:name "volgtUit" ;
@@ -257,7 +335,7 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:class <http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
-		lblodBesluit:usageNote '24'
+		lblodBesluit:usageNote '32'
 	] ;
 	sh:property [
 		sh:name "citeeropschrift" ;
@@ -267,7 +345,7 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
         sh:minCount 0 ;
 		sh:maxCount 1 ;
-		lblodBesluit:usageNote '25'
+		lblodBesluit:usageNote '33'
 	] ;
     sh:property [
 		sh:name "titel" ;
@@ -276,7 +354,7 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:path <http://data.europa.eu/eli/ontology#title> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
-		lblodBesluit:usageNote '26'
+		lblodBesluit:usageNote '34'
 	] ;
 	sh:property [
 		sh:name "taal" ;
@@ -287,7 +365,33 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 		qb:codeList <http://publications.europa.eu/mdr/authority/language/index.html> ;
-		lblodBesluit:usageNote '27'
+		lblodBesluit:usageNote '35'
+	] ;
+    sh:property [
+		sh:name "heeftDeel" ;
+		sh:description "Duidt een artikel aan van dit besluit." ;
+		sh:path <http://data.europa.eu/eli/ontology#has_part> ;
+		sh:class <http://data.vlaanderen.be/ns/besluit#Artikel> ;
+		sh:minCount 1 ;
+		lblodBesluit:usageNote '36'
+	] ;
+    sh:property [
+		sh:name "citeert" ;
+		sh:description "Een citatie in de wettelijke tekst. Dit omvat zowel woordelijke citaten als citaten in verwijzingen." ;
+		sh:path <http://data.europa.eu/eli/ontology#cites> ;
+		sh:class <http://data.europa.eu/eli/ontology#LegalExpression> ;
+        sh:minCount 0 ;
+		lblodBesluit:usageNote '37'
+	] ;
+    sh:property [
+		sh:name "motivering" ;
+        lblodBesluit:maturiteitsniveau "Niveau 3" ;
+		sh:description "Beschrijving van de juridische en feitelijke motivering achter de beslissing die wordt uitgedrukt in het besluit." ;
+		sh:path <http://data.vlaanderen.be/ns/besluit#motivering> ;
+		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+		lblodBesluit:usageNote '38'
 	] ;
 	sh:property [
 		sh:name "publicatiedatum" ;
@@ -297,7 +401,7 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
         sh:minCount 0 ;
 		sh:maxCount 1 ;
-		lblodBesluit:usageNote '28'
+		lblodBesluit:usageNote '39'
 	] ;
     sh:property [
 		sh:name "buitenwerkingtreding" ;
@@ -306,7 +410,7 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
         sh:minCount 0 ;
 		sh:maxCount 1 ;
-		lblodBesluit:usageNote '29'
+		lblodBesluit:usageNote '40'
 	] ;
 	sh:property [
 		sh:name "inwerkingtreding" ;
@@ -315,12 +419,97 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
 		sh:minCount 0 ;
 		sh:maxCount 1 ;
-		lblodBesluit:usageNote '30'
+		lblodBesluit:usageNote '41'
 	] ;
 	sh:closed false .
 <https://data.vlaanderen.be/shacl/besluit-publicatie#StemmingShape>
  	a sh:NodeShape ;
  	sh:targetClass <http://data.vlaanderen.be/ns/besluit#Stemming> ;
+ 	sh:property [
+ 		sh:name "heeftOnthouder" ;
+        lblodBesluit:maturiteitsniveau "Niveau 1" ;
+ 		sh:description "Een mandataris die als onthouder heeft gestemd op het onderwerp van de stemming." ;
+ 		sh:path <http://data.vlaanderen.be/ns/besluit#heeftOnthouder> ;
+ 		sh:class <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+        sh:minCount 0 ;
+		lblodBesluit:usageNote '42'
+ 	] ;
+ 	sh:property [
+ 		sh:name "heeftAanwezige" ;
+        lblodBesluit:maturiteitsniveau "Niveau 1" ;
+ 		sh:description "Een mandataris (van het orgaan dat de zitting houdt) die aanwezig was tijdens de stemming." ;
+ 		sh:path <http://data.vlaanderen.be/ns/besluit#heeftAanwezige> ;
+ 		sh:class <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+ 		sh:minCount 1 ;
+		lblodBesluit:usageNote '43'
+ 	] ;
+ 	sh:property [
+ 		sh:name "heeftStemmer" ;
+        lblodBesluit:maturiteitsniveau "Niveau 1" ;
+ 		sh:description "Een mandataris die deelneemt aan de stemming." ;
+ 		sh:path <http://data.vlaanderen.be/ns/besluit#heeftStemmer> ;
+ 		sh:class <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+ 		sh:minCount 0 ;
+		lblodBesluit:usageNote '44'
+ 	] ;
+ 	sh:property [
+ 		sh:name "heeftTegenstander" ;
+        lblodBesluit:maturiteitsniveau "Niveau 1" ;
+ 		sh:description "Een mandataris die als tegenstander heeft gestemd op het onderwerp van de stemming." ;
+ 		sh:path <http://data.vlaanderen.be/ns/besluit#heeftTegenstander> ;
+ 		sh:class <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+        sh:minCount 0 ;
+		lblodBesluit:usageNote '45'
+ 	] ;
+ 	sh:property [
+ 		sh:name "heeftVoorstander" ;
+        lblodBesluit:maturiteitsniveau "Niveau 1" ;
+ 		sh:description "Een mandataris die als voorstander heeft gestemd op het onderwerp van de stemming." ;
+ 		sh:path <http://data.vlaanderen.be/ns/besluit#heeftVoorstander> ;
+ 		sh:class <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+        sh:minCount 0 ;
+		lblodBesluit:usageNote '46'
+ 	] ;
+ 	sh:property [
+ 		sh:name "aantalOnthouders" ;
+        lblodBesluit:maturiteitsniveau "Niveau 1" ;
+ 		sh:description "Het aantal stemmers dat als onthouding heeft gestemd." ;
+ 		sh:path <http://data.vlaanderen.be/ns/besluit#aantalOnthouders> ;
+ 		sh:datatype <http://www.w3.org/2001/XMLSchema#integer> ;
+ 		sh:minCount 1 ;
+ 		sh:maxCount 1 ;
+		lblodBesluit:usageNote '47'
+ 	] ;
+ 	sh:property [
+ 		sh:name "aantalTegenstanders" ;
+        lblodBesluit:maturiteitsniveau "Niveau 1" ;
+ 		sh:description "Het aantal stemmers dat als tegenstander heeft gestemd." ;
+ 		sh:path <http://data.vlaanderen.be/ns/besluit#aantalTegenstanders> ;
+ 		sh:datatype <http://www.w3.org/2001/XMLSchema#integer> ;
+ 		sh:minCount 1 ;
+ 		sh:maxCount 1 ;
+		lblodBesluit:usageNote '48'
+ 	] ;
+ 	sh:property [
+ 		sh:name "aantalVoorstanders" ;
+        lblodBesluit:maturiteitsniveau "Niveau 1" ;
+ 		sh:description "Het aantal stemmers dat als voorstander heeft gestemd." ;
+ 		sh:path <http://data.vlaanderen.be/ns/besluit#aantalVoorstanders> ;
+ 		sh:datatype <http://www.w3.org/2001/XMLSchema#integer> ;
+ 		sh:minCount 1 ;
+ 		sh:maxCount 1 ;
+		lblodBesluit:usageNote '49'
+ 	] ;
+ 	sh:property [
+ 		sh:name "geheim" ;
+        lblodBesluit:maturiteitsniveau "Niveau 1" ;
+ 		sh:description "Geeft aan of de stemming geheim was. Bij een geheime stemming wordt niet individueel bekend gemaakt wie op wat heeft gestemd." ;
+ 		sh:path <http://data.vlaanderen.be/ns/besluit#geheim> ;
+ 		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
+ 		sh:minCount 1 ;
+ 		sh:maxCount 1 ;
+		lblodBesluit:usageNote '50'
+ 	] ;
  	sh:property [
  		sh:name "gevolg" ;
         lblodBesluit:maturiteitsniveau "Niveau 3" ;
@@ -329,9 +518,9 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 # 		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ; # see https://github.com/rdfjs/N3.js/issues/252
  		sh:minCount 1 ;
  		sh:maxCount 1 ;
-		lblodBesluit:usageNote '31'
+		lblodBesluit:usageNote '51	'
  	] ;
-	sh:property [
+ 	sh:property [
  		sh:name "onderwerp" ;
         lblodBesluit:maturiteitsniveau "Niveau 1" ;
  		sh:description "De beschrijving van het onderwerp waarover de stemming gaat." ;
@@ -339,8 +528,53 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 # 		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ; see https://github.com/rdfjs/N3.js/issues/252
  		sh:minCount 1 ;
  		sh:maxCount 1 ;
-		lblodBesluit:usageNote '32'
+		lblodBesluit:usageNote '52'
  	] ;
+ 	sh:closed false .
+
+ <https://data.vlaanderen.be/shacl/besluit-publicatie#ArtikelShape>
+ 	a sh:NodeShape ;
+ 	sh:targetClass <http://data.vlaanderen.be/ns/besluit#Artikel> ;
+ 	sh:property [
+ 		sh:name "nummer" ;
+        lblodBesluit:maturiteitsniveau "Niveau 3" ;
+ 		sh:description "Het nummer van het artikel." ;
+ 		sh:path <http://data.europa.eu/eli/ontology#number> ;
+ 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+ 		sh:minCount 1 ;
+ 		sh:maxCount 1 ;
+		lblodBesluit:usageNote '53'
+ 	] ;
+    sh:property [
+		sh:name "inhoud" ;
+        lblodBesluit:maturiteitsniveau "Niveau 3" ;
+		sh:description "De beschrijving van de beoogde rechtsgevolgen, het zogenaamde beschikkend gedeelte." ;
+		sh:path <http://www.w3.org/ns/prov#value> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+		lblodBesluit:usageNote '54'
+	] ;
+    sh:property [
+		sh:name "titel" ;
+        lblodBesluit:maturiteitsniveau "Niveau 3" ;
+		sh:description "Titel van de legale verschijningsvorm." ;
+		sh:path <http://data.europa.eu/eli/ontology#title> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:minCount 1 ;
+		lblodBesluit:usageNote '55'
+	] ;
+	sh:property [
+		sh:name "taal" ;
+        lblodBesluit:maturiteitsniveau "Niveau 3" ;
+		sh:description "De taal van de verschijningsvorm." ;
+		sh:path <http://data.europa.eu/eli/ontology#language> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+		qb:codeList <http://publications.europa.eu/mdr/authority/language/index.html> ;
+		lblodBesluit:usageNote '56'
+	] ;
  	sh:closed false .
 
 <https://data.vlaanderen.be/shacl/mandatendatabank#Bestuursorgaan(inbestuursperiode)Shape>
@@ -353,7 +587,7 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:class <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
-		lblodBesluit:usageNote '33'
+		lblodBesluit:usageNote '57'
 	] ;
 	sh:closed false .
 
@@ -368,7 +602,7 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
-		lblodBesluit:usageNote '34'
+		lblodBesluit:usageNote '58'
 	] ;
 	sh:property [
 		sh:name "naam" ;
@@ -378,7 +612,7 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
-		lblodBesluit:usageNote '35'
+		lblodBesluit:usageNote '59'
 	] ;
 	sh:property [
 		sh:name "bestuurt" ;
@@ -388,7 +622,7 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:class <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
-		lblodBesluit:usageNote '36'
+		lblodBesluit:usageNote '60'
 	] ;
 	sh:closed false .
 
@@ -402,7 +636,7 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
-		lblodBesluit:usageNote '37'
+		lblodBesluit:usageNote '61'
 	] ;
 	sh:property [
 		sh:name "naam" ;
@@ -412,7 +646,7 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
-		lblodBesluit:usageNote '38'
+		lblodBesluit:usageNote '62'
 	] ;
 	sh:property [
 		sh:name "werkingsgebied" ;
@@ -421,7 +655,7 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:class <http://www.w3.org/ns/prov#Location> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
-		lblodBesluit:usageNote '39'
+		lblodBesluit:usageNote '63'
 	] ;
 	sh:closed false .
 
@@ -436,7 +670,7 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
-		lblodBesluit:usageNote '40'
+		lblodBesluit:usageNote '64'
 	] ;
 	sh:property [
 		sh:name "werkingsgebiedNiveau" ;
@@ -445,8 +679,6 @@ const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 0 ;
 		sh:maxCount 1 ;
-		lblodBesluit:usageNote '41'
+		lblodBesluit:usageNote '65'
 	] ;
 	sh:closed false .`
-
-module.exports = decisionListShape;
