@@ -83,7 +83,7 @@ export const basicAgendaShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> 
 		sh:description "Type van het agendapunt." ;
 		sh:path <http://data.vlaanderen.be/ns/besluit#Agendapunt.type> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
-		sh:minCount 1 ;
+		sh:minCount 0 ;
 		lblodBesluit:usageNote '6'
 	] ;
 	sh:closed false .
