@@ -227,6 +227,25 @@ export const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#>
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt> ;
 	sh:property [
+		sh:name "heeftOnderwerp" ;
+        lblodBesluit:maturiteitsniveau "Niveau 1" ;
+		sh:description "Het onderwerp van de activiteit." ;
+		sh:path <http://purl.org/dc/terms/subject> ;
+		sh:class <http://data.vlaanderen.be/ns/besluit#Agendapunt> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+		lblodBesluit:usageNote '45'
+	] ;
+	sh:property [
+		sh:name "geeftAanleidingTot" ;
+        lblodBesluit:maturiteitsniveau "Niveau 1" ;
+		sh:description "Een besluit dat is opgemaakt naar aanleiding van de behandeling van het agendapunt." ;
+		sh:path <http://www.w3.org/ns/prov#generated> ;
+		sh:class <http://data.vlaanderen.be/ns/besluit#Besluit> ;
+        sh:minCount 0 ;
+		lblodBesluit:usageNote '46'
+	] ;
+	sh:property [
 		sh:name "heeftStemming" ;
         lblodBesluit:maturiteitsniveau "Niveau 1" ;
 		sh:description "Een stemming die plaatsvond tijdens de behandeling van het agendapunt." ;

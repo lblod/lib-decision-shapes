@@ -168,7 +168,7 @@ export const decisionListExample = `<!DOCTYPE html><html lang="nl"><head>
             <!-- Behandeling van Agendapunt -->
             <div resource="http://data.lblod.info/id/behandelingen-van-agendapunten/6595370F8AAC56EB1455CBD6" typeof="besluit:BehandelingVanAgendapunt">        
                 <!-- Agendapunt is completely described -->
-                <div property="http://purl.org/dc/terms/subject" resource="http://data.lblod.info/id/agendapunten/6595370F8AAC56EB1455CBD7" typeof="besluit:Agendapunt">
+                <div property="http://purl.org/dc/terms/subject" resource="http://data.lblod.info/id/agendapunten/6595370F8AAC56EB1455CBD7" typeof="besluit:Agendapunt" id="45">
                     <span property="dc:title" content="8/2.	Aanvullende belasting op de personenbelasting voor 2024 -2025" id="20"></span> 
                     <span property="besluit:Agendapunt.type"
                         resource="http://lblod.data.gift/concepts/b122db75-fd93-4f03-b57a-2a9269289782"
@@ -187,7 +187,7 @@ export const decisionListExample = `<!DOCTYPE html><html lang="nl"><head>
                 <span property="besluit:gebeurtNa" resource="http://data.lblod.info/id/behandelingen-van-agendapunten/658596645FFC6BB4ED446226"></span>        
                 <span property="besluit:openbaar" datatype="xsd:boolean" content="true" class="au-template-public">        </span>
                 <span about="http://data.lblod.info/id/besluiten/47555f4c-ab1a-4283-9312-91b52aa63da3" property="prov:wasGeneratedBy" resource="http://data.lblod.info/id/behandelingen-van-agendapunten/6595370F8AAC56EB1455CBD6" id="24"></span>
-                <div property="prov:generated" resource="http://data.lblod.info/id/besluiten/47555f4c-ab1a-4283-9312-91b52aa63da3" typeof="http://data.vlaanderen.be/ns/besluit#Besluit http://mu.semte.ch/vocabularies/ext/BesluitKlassiekeStijl https://data.vlaanderen.be/id/concept/BesluitType/e96ec8af-6480-4b32-876a-fefe5f0a3793">              
+                <div property="prov:generated" resource="http://data.lblod.info/id/besluiten/47555f4c-ab1a-4283-9312-91b52aa63da3" typeof="http://data.vlaanderen.be/ns/besluit#Besluit http://mu.semte.ch/vocabularies/ext/BesluitKlassiekeStijl https://data.vlaanderen.be/id/concept/BesluitType/e96ec8af-6480-4b32-876a-fefe5f0a3793" id="46">              
                     <h2 property="eli:title" id="26">8/2.	Aanvullende belasting op de personenbelasting voor 2024 -2025</h2>              
                     <p property="eli:description" id="23">De gemeenteraad keurde de aanvullende belasting op de personenbelasting voor 2024 en 2025 met 7,9% goed. De grondslag blijft ongewijzigd.</p> 
                     <span property="eli:language" resource="http://publications.europa.eu/resource/authority/language/NLD" typeof="skos:Concept" id="27"></span> 
