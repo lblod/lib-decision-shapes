@@ -146,13 +146,13 @@ export const basicAgendaShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> 
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
 	sh:property [
-		sh:name "isTijdspecialisatieVan" ;
+		sh:name "isTijdspecialisatieVan (mandaat)" ;
 		sh:description "Duidt de bronentiteit aan waarvan deze entiteit een tijdsgebonden specialisatie is. De specialisatie stelt de bron voor gedurende een bepaalde periode." ;
-		sh:path [ sh:alternativePath ( <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> <https://data.vlaanderen.be/ns/mandaat#isTijdspecialisatieVan> ) ] ;
+		sh:path <http://data.vlaanderen.be/ns/mandaat#isTijdspecialisatieVan> ;
 		sh:class <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
-		sh:minCount 1 ;
+		sh:minCount 0 ;
 		sh:maxCount 1 ;
-		lblodBesluit:usageNote '11'
+		lblodBesluit:usageNote '33'
 	] ;
 	sh:closed false .
 
