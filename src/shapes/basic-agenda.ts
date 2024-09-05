@@ -197,7 +197,7 @@ export const basicAgendaShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> 
 	sh:property [
 		sh:name "classificatie" ;
 		sh:description "Classificatie van de bestuurseenheid." ;
-		sh:path <http://www.w3.org/ns/org#classification> ;
+		sh:path <http://data.vlaanderen.be/ns/besluit#classificatie> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;

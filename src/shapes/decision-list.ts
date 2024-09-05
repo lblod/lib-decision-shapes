@@ -366,11 +366,11 @@ export const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#>
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
 	sh:property [
-		sh:name "isTijdspecialisatieVan" ;
+		sh:name "isTijdspecialisatieVan (mandaat)" ;
 		sh:description "Duidt de bronentiteit aan waarvan deze entiteit een tijdsgebonden specialisatie is. De specialisatie stelt de bron voor gedurende een bepaalde periode." ;
-		sh:path [ sh:alternativePath ( <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> <https://data.vlaanderen.be/ns/mandaat#isTijdspecialisatieVan> ) ] ;
+		sh:path <http://data.vlaanderen.be/ns/mandaat#isTijdspecialisatieVan> ;
 		sh:class <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
-		sh:minCount 1 ;
+		sh:minCount 0 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '33'
 	] ;
@@ -383,7 +383,7 @@ export const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#>
 		sh:name "classificatie" ;
 		lblodBesluit:maturiteitsniveau "Bonusniveau" ;
 		sh:description "Het type bestuursorgaan." ;
-		sh:path <http://www.w3.org/ns/org#classification> ;
+		sh:path <http://data.vlaanderen.be/ns/besluit#classificatie> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
@@ -417,7 +417,7 @@ export const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#>
 	sh:property [
 		sh:name "classificatie" ;
 		sh:description "Classificatie van de bestuurseenheid." ;
-		sh:path <http://www.w3.org/ns/org#classification> ;
+		sh:path <http://data.vlaanderen.be/ns/besluit#classificatie> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
