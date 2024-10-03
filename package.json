@@ -1,5 +1,5 @@
 {
-  "name": "lib-decision-shapes",
+  "name": "@lblod/lib-decision-shapes",
   "version": "0.0.18",
   "description": "NPM library to retrieve shapes of decisions and examples",
   "main": "dist/index.js",
