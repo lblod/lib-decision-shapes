@@ -519,7 +519,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
  		sh:name "heeftVoorstander" ;
         lblodBesluit:maturiteitsniveau "Niveau 1" ;
  		sh:description "Een mandataris die als voorstander heeft gestemd op het onderwerp van de stemming." ;
- 		sh:path <http://data.vlaanderen.be/ns/besluit#heeftTegenstander> ;
+ 		sh:path <http://data.vlaanderen.be/ns/besluit#heeftVoorstander> ;
  		sh:class <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
         sh:minCount 0 ;
 		lblodBesluit:usageNote '46' ;
