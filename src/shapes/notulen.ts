@@ -684,7 +684,6 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:path <http://www.w3.org/2004/02/skos/core#prefLabel> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
-		sh:maxCount 1 ;
 		lblodBesluit:usageNote '59'
 	] ;
 	sh:property [
@@ -718,7 +717,6 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:path <http://www.w3.org/2004/02/skos/core#prefLabel> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
-		sh:maxCount 1 ;
 		lblodBesluit:usageNote '62'
 	] ;
 	sh:property [
