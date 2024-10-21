@@ -425,6 +425,22 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 <https://data.vlaanderen.be/shacl/besluit-publicatie#StemmingShape>
  	a sh:NodeShape ;
  	sh:targetClass <http://data.vlaanderen.be/ns/besluit#Stemming> ;
+	sh:sparql [
+		sh:select """
+			PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+			select DISTINCT ($this as ?this) ?path ?value
+			where {
+				$this ?path ?mandataris .
+
+				FILTER (?path IN (besluit:heeftVoorstander, besluit:heeftOnthouder, besluit:heeftTegenstander, besluit:heeftAanwezige))
+				FILTER isBlank(?mandataris)
+
+				BIND ("Mandataris gevonden die geen URI heeft" as ?value)
+			}
+		""" ;
+		sh:message 'Er zijn mandatarissen gedetecteerd die geen URI hebben.'
+	] ;
  	sh:property [
  		sh:name "heeftOnthouder" ;
         lblodBesluit:maturiteitsniveau "Niveau 1" ;
@@ -432,7 +448,26 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
  		sh:path <http://data.vlaanderen.be/ns/besluit#heeftOnthouder> ;
  		sh:class <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
         sh:minCount 0 ;
-		lblodBesluit:usageNote '42'
+		lblodBesluit:usageNote '42' ;
+		sh:sparql [
+			sh:select """
+				PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>			
+
+				select ($this as ?this) ?value			
+				where {
+				{
+					select (count(distinct ?onthouder) as ?onthouderCount) {
+						$this besluit:heeftOnthouder ?onthouder .
+					}
+				}
+				$this besluit:aantalOnthouders ?aantalOnthouders .
+				FILTER (?onthouderCount != ?aantalOnthouders)
+				
+				BIND(concat("Aantal gevonden onthouders (", str(?onthouderCount), ") is niet gelijk aan het opgegeven aantalOnthouders (", str(?aantalOnthouders), "). ") as ?value)
+				}		
+			""" ;
+			sh:message 'Aantal mandatarissen die onthouder zijn komt niet overeen met het opgegeven aantal onthouders.'
+		]
  	] ;
  	sh:property [
  		sh:name "heeftAanwezige" ;
@@ -459,7 +494,26 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
  		sh:path <http://data.vlaanderen.be/ns/besluit#heeftTegenstander> ;
  		sh:class <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
         sh:minCount 0 ;
-		lblodBesluit:usageNote '45'
+		lblodBesluit:usageNote '45' ;
+		sh:sparql [
+			sh:select """
+				PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>			
+
+				select ($this as ?this) ?value			
+				where {
+				{
+					select (count(distinct ?tegenstander) as ?tegenstanderCount) {
+						$this besluit:heeftTegenstander ?tegenstander .
+					}
+				}
+				$this besluit:aantalTegenstanders ?aantalTegenstanders .
+				FILTER (?tegenstanderCount != ?aantalTegenstanders)
+				
+				BIND(concat("Aantal gevonden tegenstanders (", str(?tegenstanderCount), ") is niet gelijk aan het opgegeven aantalTegenstanders (", str(?aantalTegenstanders), "). ") as ?value)
+				}		
+			""" ;
+			sh:message 'Aantal mandatarissen die tegenstander zijn komt niet overeen met het opgegeven aantal tegenstanders.'
+		] ;
  	] ;
  	sh:property [
  		sh:name "heeftVoorstander" ;
@@ -468,7 +522,26 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
  		sh:path <http://data.vlaanderen.be/ns/besluit#heeftVoorstander> ;
  		sh:class <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
         sh:minCount 0 ;
-		lblodBesluit:usageNote '46'
+		lblodBesluit:usageNote '46' ;
+		sh:sparql [
+			sh:select """
+				PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>			
+
+				select ($this as ?this) ?value			
+				where {
+				{
+					select (count(distinct ?voorstander) as ?voorstanderCount) {
+						$this besluit:heeftVoorstander ?voorstander .
+					}
+				}
+				$this besluit:aantalVoorstanders ?aantalVoorstanders .
+				FILTER (?voorstanderCount != ?aantalVoorstanders)
+				
+				BIND(concat("Aantal gevonden voorstanders (", str(?voorstanderCount), ") is niet gelijk aan het opgegeven aantalVoorstanders (", str(?aantalVoorstanders), "). ") as ?value)
+				}		
+			""" ;
+			sh:message 'Aantal mandatarissen die voorstander zijn komt niet overeen met het opgegeven aantal voorstanders.'
+		] ;
  	] ;
  	sh:property [
  		sh:name "aantalOnthouders" ;
@@ -611,7 +684,6 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:path <http://www.w3.org/2004/02/skos/core#prefLabel> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
-		sh:maxCount 1 ;
 		lblodBesluit:usageNote '59'
 	] ;
 	sh:property [
@@ -645,7 +717,6 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:path <http://www.w3.org/2004/02/skos/core#prefLabel> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
-		sh:maxCount 1 ;
 		lblodBesluit:usageNote '62'
 	] ;
 	sh:property [

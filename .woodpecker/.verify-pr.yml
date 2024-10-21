@@ -1,0 +1,15 @@
+pipeline:
+  install:
+    image: woodpeckerci/plugin-node-pm
+    commands: 
+      - npm ci
+  test:
+    image: woodpeckerci/plugin-node-pm
+    commands: 
+      - npm run test
+  build:
+    image: woodpeckerci/plugin-node-pm
+    commands: 
+      - npm run build
+when:
+  event: pull_request
