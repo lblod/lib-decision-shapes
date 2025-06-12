@@ -2,6 +2,7 @@ export const decisionShape = `
 @prefix sh:      <http://www.w3.org/ns/shacl#> .
 @prefix qb:      <http://purl.org/linked-data/cube#> .
 @prefix lblodBesluit:	<http://lblod.data.gift/vocabularies/besluit/> .
+@prefix ext:	<http://mu.semte.ch/vocabularies/ext/> .
 <https://data.vlaanderen.be/shacl/besluit-publicatie#BesluitShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/besluit#Besluit> ;
@@ -13,6 +14,8 @@ export const decisionShape = `
         sh:minCount 0 ;
 		sh:maxCount 1 ;
         sh:resultMessage "Het besluit mag maximaal één beschrijving hebben."
+        sh:resultMessage "Het besluit mag maximaal één beschrijving hebben.";
+    	ext:sucessMessage "De beslissing heeft een beschrijving"
 	] ;
     sh:property [
 		sh:name "inhoud" ;
@@ -21,7 +24,8 @@ export const decisionShape = `
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
-        sh:resultMessage "De beslissing moet een artikelcontainer hebben."
+        sh:resultMessage "De beslissing moet een artikelcontainer hebben.";
+        ext:sucessMessage "Het besluit heeft een artikelcontainer."
 	] ;
 	sh:property [
 		sh:name "citeeropschrift" ;
@@ -30,7 +34,8 @@ export const decisionShape = `
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
         sh:minCount 0 ;
 		sh:maxCount 1 ;
-        sh:resultMessage "De beslissing mag niet meer dan één officiële titel hebben."
+        sh:resultMessage "De beslissing mag niet meer dan één officiële titel hebben.";
+    	ext:sucessMessage "Het besluit heeft een officiële titel."
 	] ;
     sh:property [
 		sh:name "titel" ;
@@ -38,7 +43,8 @@ export const decisionShape = `
 		sh:path <http://data.europa.eu/eli/ontology#title> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
-        sh:resultMessage "Het besluit moet minstens één titel hebben."
+        sh:resultMessage "Het besluit moet minstens één titel hebben.";
+        ext:sucessMessage "De beslissing heeft een titel."
 	] ;
 	sh:property [
 		sh:name "taal" ;
@@ -48,7 +54,8 @@ export const decisionShape = `
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 		qb:codeList <http://publications.europa.eu/mdr/authority/language/index.html> ;
-        sh:resultMessage "Het besluit moet een geldige taal hebben."
+        sh:resultMessage "Het besluit moet een geldige taal hebben.";
+        ext:sucessMessage "Het besluit heeft een geldig taalgebruik."
 	] ;
     sh:property [
 		sh:name "heeftDeel" ;
@@ -56,7 +63,8 @@ export const decisionShape = `
 		sh:path <http://data.europa.eu/eli/ontology#has_part> ;
 		sh:class <http://data.vlaanderen.be/ns/besluit#Artikel> ;
 		sh:minCount 0 ;
-        sh:resultMessage "Het artikel moet het juiste type hebben."
+        sh:resultMessage "Het artikel moet het juiste type hebben.";
+        ext:sucessMessage "Het artikel is correct getypt."
 	] ;
     sh:property [
 		sh:name "citeert" ;
@@ -64,7 +72,8 @@ export const decisionShape = `
 		sh:path <http://data.europa.eu/eli/ontology#cites> ;
 		sh:class <http://data.europa.eu/eli/ontology#LegalExpression> ;
         sh:minCount 0 ;
-        sh:resultMessage "De citatie moet het juiste type hebben."
+        sh:resultMessage "De citatie moet het juiste type hebben.";
+        ext:sucessMessage "De citatie is correct getypt."
 	] ;
     sh:property [
 		sh:name "motivering" ;
@@ -73,7 +82,8 @@ export const decisionShape = `
 		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
-        sh:resultMessage "Het besluit moet één motivering hebben."
+        sh:resultMessage "Het besluit moet één motivering hebben.";
+        ext:sucessMessage "De beslissing heeft een motivering."
 	] ;
 	sh:property [
 		sh:name "publicatiedatum" ;
@@ -82,7 +92,8 @@ export const decisionShape = `
 		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
         sh:minCount 0 ;
 		sh:maxCount 1 ;
-        sh:resultMessage "Het besluit mag niet meer dan één publicatiedatum hebben."
+        sh:resultMessage "Het besluit mag niet meer dan één publicatiedatum hebben.";
+        ext:sucessMessage "De beslissing heeft niet meer dan één publicatiedatum."
 	] ;
     sh:property [
 		sh:name "buitenwerkingtreding" ;
@@ -98,7 +109,7 @@ export const decisionShape = `
 		sh:path <http://data.europa.eu/eli/ontology#first_date_entry_in_force> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
 		sh:minCount 0 ;
-		sh:maxCount 1 
+		sh:maxCount 1
 	] ;
 	sh:closed false .
 `;
