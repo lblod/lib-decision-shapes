@@ -13,7 +13,7 @@ export const decisionShape = `
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
         sh:minCount 0 ;
 		sh:maxCount 1 ;
-        sh:resultMessage "Het besluit mag maximaal één beschrijving hebben."
+        sh:resultMessage "Het besluit mag maximaal één beschrijving hebben.";
     	ext:successMessage "Het besluit heeft een beschrijving."
 	] ;
     sh:property [
