@@ -2,6 +2,7 @@ import { basicAgendaShape } from './shapes/basic-agenda';
 import { decisionListShape } from './shapes/decision-list';
 import { notulenShape } from './shapes/notulen';
 import { decisionShape } from './shapes/decision';
+import { citerraShape } from './shapes/citerra';
 
 import { basicAgendaExample } from './examples/basic-agenda';
 import { decisionListExample } from './examples/decision-list';
@@ -24,6 +25,9 @@ export function getShapeOfDocumentType(type: string): string {
         }
         case 'decision': {
           return decisionShape;
+        }
+        case 'citerra': {
+          return citerraShape;
         }
     };
     throw Error(`No SHACL file found for document type: ${type}.`)
