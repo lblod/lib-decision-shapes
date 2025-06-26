@@ -39,43 +39,21 @@ export const citerraShape = `@prefix dbo: <http://dbpedia.org/ontology/> .
 <https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit-intelligente-toegang/ontwerpstandaard/2024-12-19#PubliekeDienstverleningShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property <https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit-intelligente-toegang/ontwerpstandaard/2024-12-19#PubliekeDienstverleningShape/f3050cd43354e672b971fdf4a69154a9bfa03a4a>,
-    <https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit-intelligente-toegang/ontwerpstandaard/2024-12-19#PubliekeDienstverleningShape/23779a18a5c2f44c8b0dab3a46507d75ba9170f7>,
-    <https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit-intelligente-toegang/ontwerpstandaard/2024-12-19#PubliekeDienstverleningShape/5bfc49675eef06366e6309009f937f9d904ac377>,
-    <https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit-intelligente-toegang/ontwerpstandaard/2024-12-19#PubliekeDienstverleningShape/d85ada83fe1a0861efd71a691b59b7b479524d74>;
+    <https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit-intelligente-toegang/ontwerpstandaard/2024-12-19#PubliekeDienstverleningShape/23779a18a5c2f44c8b0dab3a46507d75ba9170f7>;
   shacl:targetClass <http://purl.org/vocab/cpsv#PublicService> .
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit-intelligente-toegang/ontwerpstandaard/2024-12-19#PubliekeDienstverleningShape/23779a18a5c2f44c8b0dab3a46507d75ba9170f7> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit-intelligente-toegang/ontwerpstandaard/2024-12-19#Publiekedienstverlening.heeftvoorwaarde";
-  shacl:description "Voorwaarden aan voldaan moet worden om gebruik te maken van de Publieke Dienstverlening."@nl;
+  shacl:description "Voorwaarden waaraan voldaan moet worden om gebruik te maken van de Publieke Dienstverlening."@nl;
   shacl:name "heeft voorwaarde"@nl;
-  shacl:resultMessage "De Publieke Dienstverlening heeft geen woorwaarde gekoppeld"@nl;
-  ext:successMessage "De Publieke Dienstverlening is correct gekoppeld aan een woorwaarde"@nl;
+  shacl:resultMessage "De Publieke Dienstverlening heeft geen voorwaarde gekoppeld"@nl;
+  ext:successMessage "De Publieke Dienstverlening is correct gekoppeld aan een voorwaarde"@nl;
   shacl:path <http://vocab.belgif.be/ns/publicservice#hasRequirement> .
-
-
-<https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit-intelligente-toegang/ontwerpstandaard/2024-12-19#PubliekeDienstverleningShape/5bfc49675eef06366e6309009f937f9d904ac377> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit-intelligente-toegang/ontwerpstandaard/2024-12-19#Publiekedienstverlening.produceert";
-  shacl:class <http://data.vlaanderen.be/ns/besluit#Vergunning>,
-    <https://data.vlaanderen.be/ns/mobiliteit-intelligente-toegang#Toegang>;
-  shacl:description "Vergunning dat verkregen wordt als resultaat van de uitvoering van de Publieke Dienstverlening."@nl,
-    "Recht op toegang dat verkregen wordt als resultaat van de uitvoering van de Publieke Dienstverlening."@nl;
-  shacl:resultMessage "Please change this message don't know enough about the model"@nl;
-  ext:successMessage "Please change this message don't know enough about the model"@nl;
-  shacl:name "produceert"@nl;
-  shacl:path <http://purl.org/vocab/cpsv#produces> .
-
-
-<https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit-intelligente-toegang/ontwerpstandaard/2024-12-19#PubliekeDienstverleningShape/d85ada83fe1a0861efd71a691b59b7b479524d74> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit-intelligente-toegang/ontwerpstandaard/2024-12-19#Publiekedienstverlening.volgt";
-  shacl:class <https://data.vlaanderen.be/ns/omgevingsvergunning#Procedure>;
-  shacl:description "Procedure die de Publieke Dienstverlening volgt."@nl;
-  shacl:name "volgt"@nl;
-  shacl:resultMessage "De Publieke Dienstverlening heeft geen procedure gekoppeld"@nl;
-  ext:successMessage "De Publieke Dienstverlening is correct gekoppeld aan een procedure"@nl;
-  shacl:path <http://purl.org/vocab/cpsv#follows> .
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit-intelligente-toegang/ontwerpstandaard/2024-12-19#PubliekeDienstverleningShape/f3050cd43354e672b971fdf4a69154a9bfa03a4a> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit-intelligente-toegang/ontwerpstandaard/2024-12-19#Publiekedienstverlening.heeftoutputtype";
   shacl:description "De types die de Output van de Publieke Dienstverlening heeft. "@nl;
   shacl:name "heeft outputtype"@nl;
-  shacl:resultMessage "Please change this message don't know enough about the model"@nl;
-  ext:successMessage "Please change this message don't know enough about the model"@nl;
+  shacl:resultMessage "De Publieke Dienstverlening heeft geen outputtype gedefinieerd"@nl;
+  ext:successMessage "De Publieke Dienstverlening heeft een outputtype"@nl;
   shacl:path <https://data.vlaanderen.be/ns/mobiliteit-intelligente-toegang#heeftOutputtype> .
 
 
@@ -96,8 +74,8 @@ export const citerraShape = `@prefix dbo: <http://dbpedia.org/ontology/> .
   shacl:maxCount 1;
   shacl:minCount 1;
   shacl:description "Korte uitleg over de aard, kenmerken, toepassingen of andere aanvullende informatie die helpt bij het verduidelijken van de Voorwaarde."@nl;
-  shacl:resultMessage "De woorwaarde hebben een juist beschrijving"@nl;
-  ext:successMessage "De woorwaarde heeft geen beschrijving"@nl;
+  shacl:resultMessage "De voorwaarde heeft geen beschrijving"@nl;
+  ext:successMessage "De voorwaarde heeft een beschrijving"@nl;
   shacl:name "beschrijving"@nl;
   shacl:path dc:description .
 
@@ -106,32 +84,35 @@ export const citerraShape = `@prefix dbo: <http://dbpedia.org/ontology/> .
   shacl:maxCount 1;
   shacl:minCount 1;
   shacl:name "type"@nl;
-  shacl:resultMessage "De woorwaarde hebben een juist type"@nl;
-  ext:successMessage "De woorwaarde heeft geen type"@nl;
+  shacl:resultMessage "De voorwaarde is niet getypeerd met een code."@nl;
+  ext:successMessage "De voorwaarde is geclassificeerd met een code."@nl;
   shacl:path dc:type .
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit-intelligente-toegang/ontwerpstandaard/2024-12-19#VoorwaardeShape/89c5f32c3193aad42bb0968537063a1363bc30ee> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit-intelligente-toegang/ontwerpstandaard/2024-12-19#Voorwaarde.heeftondersteunendbewijs";
   shacl:class <http://data.europa.eu/m8g/Evidence>;
   shacl:description "Bewijs dat informatie/ondersteuning biedt voor de Voorwaarde."@nl;
+  shacl:minCount 0;
   shacl:name "heeft ondersteunend bewijs"@nl;
-  shacl:resultMessage "Woorwaarde is niet correct gekoppeld aan het bewijs"@nl;
-  ext:successMessage "Geen problemen met het verband tussen de woorwaarden en het bewijs"@nl;
+  shacl:resultMessage "Voorwaarde is niet rechtstreeks gekoppeld aan een bewijs"@nl;
+  ext:successMessage "Voorwaarde verwijst rechtstreeks naar bewijs dat verwacht wordt"@nl;
   shacl:path <http://data.europa.eu/m8g/hasSupportingEvidence> .
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit-intelligente-toegang/ontwerpstandaard/2024-12-19#VoorwaardeShape/f7451c5bb3419860d9a0527686f0bd5efdad4491> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit-intelligente-toegang/ontwerpstandaard/2024-12-19#Voorwaarde.isvoorwaardevan";
   shacl:class <https://data.vlaanderen.be/ns/mobiliteit-intelligente-toegang#Voorwaardecollectie>;
   shacl:description "Supervoorwaarde van de Voorwaarde."@nl;
+  shacl:minCount 0;
   shacl:name "is voorwaarde van"@nl;
-  shacl:resultMessage "Requirement is niet correct gekoppeld aan de collectie"@nl;
-  ext:successMessage "Geen problemen met de koppeling van woorwaarden aan de collectie"@nl;
+  shacl:resultMessage "Voorwaarde is niet gekoppeld aan een collectie van voorwaarden"@nl;
+  ext:successMessage "Voorwaarde is deel van een collectie van voorwaarden"@nl;
   shacl:path <http://data.europa.eu/m8g/isRequirementOf> .
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit-intelligente-toegang/ontwerpstandaard/2024-12-19#VoorwaardeShape/f8b3af2bcda47f912651c708834ece4ee96f4527> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit-intelligente-toegang/ontwerpstandaard/2024-12-19#Voorwaarde.heeftbewijstypelijst";
   shacl:class <http://data.europa.eu/m8g/EvidenceTypeList>;
   shacl:description "Bewijstypelijst dat specificieert welke Bewijstypes nodig zijn om aan de Voorwaarde te voldoen."@nl;
+  shacl:minCount 0;
   shacl:name "heeft bewijstypelijst"@nl;
-  shacl:resultMessage "De voorwaarde moet een bewijstypelijst hebben"@nl;
-  ext:successMessage "De voorwaarde heeft een bewijstypelijst"@nl;
+  shacl:resultMessage "De voorwaarde verwijst niet naar een bewijstypelijst"@nl;
+  ext:successMessage "De voorwaarde verwijst naar een bewijstypelijst"@nl;
   shacl:path <http://data.europa.eu/m8g/hasEvidenceTypeList> .
 
 
@@ -145,17 +126,18 @@ export const citerraShape = `@prefix dbo: <http://dbpedia.org/ontology/> .
   shacl:targetClass <https://data.vlaanderen.be/ns/mobiliteit-intelligente-toegang#Voorwaardecollectie> .
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit-intelligente-toegang/ontwerpstandaard/2024-12-19#VoorwaardeCollectieShape/23779a18a5c2f44c8b0dab3a46507d75ba9170f7> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit-intelligente-toegang/ontwerpstandaard/2024-12-19#Voorwaardecollectie.heeftvoorwaarde";
-  shacl:description "Subvoorwaarde van de Voorwaarde."@nl;
+  shacl:description "Subvoorwaarde van de Voorwaardecollectie."@nl;
+  shacl:minCount 1;
   shacl:name "heeft voorwaarde"@nl;
-  shacl:resultMessage "De voorwaarde collectie moet een subvoorwaarde hebben"@nl;
-  ext:successMessage "De voorwaarde collectie heeft een subvoorwaarde"@nl;
+  shacl:resultMessage "De Voorwaardecollectie moet een voorwaarde bevatten"@nl;
+  ext:successMessage "De Voorwaardecollectie bevat een voorwaarde"@nl;
   shacl:path <http://data.europa.eu/m8g/hasRequirement> .
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit-intelligente-toegang/ontwerpstandaard/2024-12-19#VoorwaardeCollectieShape/481218c045793f428f6d7d5507279a4fefc8910a> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/mobiliteit-intelligente-toegang/ontwerpstandaard/2024-12-19#Voorwaardecollectie.operatie";
   shacl:description "Logische operatie die toegepast wordt op de Voorwaarden."@nl;
   shacl:name "operatie"@nl;
-  shacl:resultMessage "Please change this message don't know enough about the model"@nl;
-  ext:successMessage "Please change this message don't know enough about the model"@nl;
+  shacl:resultMessage "De Voorwaardecollectie bevat geen logische operatie op welke manier de subvoorwaarden gebruikt mogen worden"@nl;
+  ext:successMessage "De Voorwaardecollectie beschrijft correct met welke logische operatie de subvoorwaarden gebruikt mogen worden"@nl;
   shacl:minCount 1;
   shacl:maxCount 1;
   shacl:path <https://data.vlaanderen.be/ns/mobiliteit-intelligente-toegang#operatie> .
