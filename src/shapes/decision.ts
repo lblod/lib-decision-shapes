@@ -9,7 +9,7 @@ export const decisionShape = `
 	sh:property <https://data.vlaanderen.be/shacl/besluit-publicatie#besluit-description-validation>;
     sh:property <https://data.vlaanderen.be/shacl/besluit-publicatie#besluit-article-container-validation>;
 	sh:property <https://data.vlaanderen.be/shacl/besluit-publicatie#besluit-short-title-validation>;
-    sh:property <https://data.vlaanderen.be/shacl/besluit-publicatie#besluit-title-validation>;	
+    sh:property <https://data.vlaanderen.be/shacl/besluit-publicatie#besluit-title-validation>;
 	sh:property <https://data.vlaanderen.be/shacl/besluit-publicatie#besluit-language-validation>;
     sh:property <https://data.vlaanderen.be/shacl/besluit-publicatie#besluit-article-validation>;
     sh:property <https://data.vlaanderen.be/shacl/besluit-publicatie#besluit-citation-validation>;
@@ -22,8 +22,15 @@ export const decisionShape = `
 <https://data.vlaanderen.be/shacl/besluit-publicatie#besluit-description-validation> sh:name "beschrijving" ;
 		sh:description "Een beknopte beschrijving van het besluit." ;
 		sh:path <http://data.europa.eu/eli/ontology#description> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
-        sh:minCount 0 ;
+		 sh:or (
+      [
+        sh:datatype <http://www.w3.org/2001/XMLSchema#string>;
+      ]
+      [
+        sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>;
+      ]
+    );
+    sh:minCount 1 ;
 		sh:maxCount 1 ;
         sh:resultMessage "Het besluit mag maximaal één beschrijving hebben.";
     	ext:successMessage "Het besluit heeft een beschrijving.".
@@ -31,7 +38,14 @@ export const decisionShape = `
 <https://data.vlaanderen.be/shacl/besluit-publicatie#besluit-article-container-validation> sh:name "inhoud" ;
 		sh:description "De beschrijving van de beoogde rechtsgevolgen, het zogenaamde beschikkend gedeelte." ;
 		sh:path <http://www.w3.org/ns/prov#value> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+    sh:or (
+      [
+        sh:datatype <http://www.w3.org/2001/XMLSchema#string>;
+      ]
+      [
+        sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>;
+      ]
+    );
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
         sh:resultMessage "Het besluit moet een artikelcontainer hebben.";
@@ -49,7 +63,14 @@ export const decisionShape = `
 <https://data.vlaanderen.be/shacl/besluit-publicatie#besluit-title-validation> sh:name "titel" ;
 		sh:description "Titel van de legale verschijningsvorm." ;
 		sh:path <http://data.europa.eu/eli/ontology#title> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:or (
+      [
+        sh:datatype <http://www.w3.org/2001/XMLSchema#string>;
+      ]
+      [
+        sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>;
+      ]
+    );
 		sh:minCount 1 ;
         sh:resultMessage "Het besluit moet minstens één titel hebben.";
         ext:successMessage "De beslissing heeft een titel.".
@@ -83,7 +104,14 @@ export const decisionShape = `
 <https://data.vlaanderen.be/shacl/besluit-publicatie#besluit-motivering-validation> sh:name "motivering" ;
 		sh:description "Beschrijving van de juridische en feitelijke motivering achter de beslissing die wordt uitgedrukt in het besluit." ;
 		sh:path <http://data.vlaanderen.be/ns/besluit#motivering> ;
-		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+		sh:or (
+      [
+        sh:datatype <http://www.w3.org/2001/XMLSchema#string>;
+      ]
+      [
+        sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>;
+      ]
+    );
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
         sh:resultMessage "Het besluit moet één motivering hebben.";
