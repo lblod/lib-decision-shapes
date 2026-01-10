@@ -114,7 +114,6 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         lblodBesluit:maturiteitsniveau "Niveau 1" ;
 		sh:description "Locatie waar de zitting plaatsvindt. Doorgaans is dit een zaal in een gebouw." ;
 		sh:path <http://www.w3.org/ns/prov#atLocation> ;
-		sh:class <http://www.w3.org/ns/prov#Location> ;
         sh:minCount 0 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '12'
