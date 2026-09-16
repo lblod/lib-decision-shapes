@@ -426,6 +426,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
  	a sh:NodeShape ;
  	sh:targetClass <http://data.vlaanderen.be/ns/besluit#Stemming> ;
 	sh:sparql [
+		lblodBesluit:maturiteitsniveau "Niveau 2" ;
 		sh:select """
 			PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 
@@ -450,6 +451,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         sh:minCount 0 ;
 		lblodBesluit:usageNote '42' ;
 		sh:sparql [
+			lblodBesluit:maturiteitsniveau "Niveau 2" ;
 			sh:select """
 				PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>			
 
@@ -496,6 +498,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         sh:minCount 0 ;
 		lblodBesluit:usageNote '45' ;
 		sh:sparql [
+			lblodBesluit:maturiteitsniveau "Niveau 2" ;
 			sh:select """
 				PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>			
 
@@ -520,10 +523,10 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         lblodBesluit:maturiteitsniveau "Niveau 1" ;
  		sh:description "Een mandataris die als voorstander heeft gestemd op het onderwerp van de stemming." ;
  		sh:path <http://data.vlaanderen.be/ns/besluit#heeftVoorstander> ;
- 		sh:class <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
         sh:minCount 0 ;
 		lblodBesluit:usageNote '46' ;
 		sh:sparql [
+			lblodBesluit:maturiteitsniveau "Niveau 2" ;
 			sh:select """
 				PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>			
 

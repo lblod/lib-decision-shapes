@@ -15,6 +15,7 @@
   "scripts": {
     "build": "npm run build:ts && npm run mkdirs && npm run copy",
     "build:ts": "tsup",
+    "build:watch": "tsup --watch",
     "test": "jest",
     "prepublish": "npm run build",
     "mkdirs": "mkdir -p dist/ dist/examples dist/shapes",
