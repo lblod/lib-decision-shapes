@@ -29,7 +29,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:select """
 			PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 
-			select DISTINCT $this df ?path ?value
+			select DISTINCT $this ?path ?value
 			where {
 				$this ?path ?mandataris .
 
@@ -239,6 +239,23 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 <https://data.vlaanderen.be/shacl/besluit-publicatie#BehandelingVanAgendapuntShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt> ;
+	sh:sparql [
+		lblodBesluit:maturiteitsniveau "Niveau 2" ;
+		sh:select """
+			PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+			select DISTINCT $this ?path ?value
+			where {
+				$this ?path ?mandataris .
+
+				FILTER (?path IN (besluit:heeftAanwezige, besluit:heeftVoorzitter, besluit:heeftSecretaris))
+				FILTER isBlank(?mandataris)
+
+				BIND ("Mandataris gevonden die geen URI heeft" as ?value)
+			}
+		""" ;
+		sh:message 'Er zijn mandatarissen gedetecteerd die geen URI hebben.'
+	] ;
 	sh:property [
 		sh:name "heeftOnderwerp" ;
         lblodBesluit:maturiteitsniveau "Niveau 1" ;
