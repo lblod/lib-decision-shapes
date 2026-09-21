@@ -29,7 +29,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:select """
 			PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 
-			select DISTINCT ($this as ?this) ?path ?value
+			select DISTINCT $this df ?path ?value
 			where {
 				$this ?path ?mandataris .
 
@@ -440,7 +440,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:select """
 			PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 
-			select DISTINCT ($this as ?this) ?path ?value
+			select DISTINCT $this ?path ?value
 			where {
 				$this ?path ?mandataris .
 
@@ -464,7 +464,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 			sh:select """
 				PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>			
 
-				select ($this as ?this) ?value			
+				select $this ?value			
 				where {
 				{
 					select (count(distinct ?onthouder) as ?onthouderCount) {
@@ -508,7 +508,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 			sh:select """
 				PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>			
 
-				select ($this as ?this) ?value			
+				select $this ?value			
 				where {
 				{
 					select (count(distinct ?tegenstander) as ?tegenstanderCount) {
@@ -536,7 +536,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 			sh:select """
 				PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>			
 
-				select ($this as ?this) ?value			
+				select $this ?value			
 				where {
 				{
 					select (count(distinct ?voorstander) as ?voorstanderCount) {
