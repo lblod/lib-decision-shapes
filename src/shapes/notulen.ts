@@ -131,7 +131,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         lblodBesluit:maturiteitsniveau "Niveau 1" ;
 		sh:description "Locatie waar de zitting plaatsvindt. Doorgaans is dit een zaal in een gebouw." ;
 		sh:path <http://www.w3.org/ns/prov#atLocation> ;
-		sh:class <http://www.w3.org/ns/prov#Location> ;
+		# sh:class <http://www.w3.org/ns/prov#Location> ;
         sh:minCount 0 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '12'
@@ -349,7 +349,6 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         lblodBesluit:maturiteitsniveau "Niveau 1" ;
 		sh:description "De beschrijving van de beoogde rechtsgevolgen, het zogenaamde beschikkend gedeelte." ;
 		sh:path <http://www.w3.org/ns/prov#value> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '31'
@@ -749,7 +748,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:name "werkingsgebied" ;
 		sh:description "Geografische gebied waarbinnen de bestuurseenheid bepaalde verantwoordelijkheden heeft waarbinnen het bestuurshandelingen kan stellen." ;
 		sh:path <http://data.vlaanderen.be/ns/besluit#werkingsgebied> ;
-		sh:class <http://www.w3.org/ns/prov#Location> ;
+		# sh:class <http://www.w3.org/ns/prov#Location> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '63'
@@ -773,7 +772,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:name "werkingsgebiedNiveau" ;
 		sh:description "Niveau (gemeente, provincie, gewest...) van het gebied waarbinnen de bestuurseenheid bepaalde verantwoordelijkheden heeft waarbinnen het bestuurshandelingen kan stellen." ;
 		sh:path <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		# sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 0 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '65'
