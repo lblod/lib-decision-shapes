@@ -56,6 +56,7 @@ export const basicAgendaShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> 
         lblodBesluit:maturiteitsniveau "Niveau 1" ;
         sh:minCount 0 ;
 		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '3'
 	] ;
 	sh:property [
@@ -76,6 +77,7 @@ export const basicAgendaShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> 
         lblodBesluit:maturiteitsniveau "Niveau 1" ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '5'
 	] ;
 	sh:property [
@@ -174,7 +176,7 @@ export const basicAgendaShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> 
 		lblodBesluit:maturiteitsniveau "Bonusniveau" ;
 		sh:description "Naam van de bestuursorgaan." ;
 		sh:path <http://www.w3.org/2004/02/skos/core#prefLabel> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		# sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '13'
@@ -208,7 +210,7 @@ export const basicAgendaShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> 
 		lblodBesluit:maturiteitsniveau "Bonusniveau" ;
 		sh:description "Naam van de bestuurseenheid." ;
 		sh:path <http://www.w3.org/2004/02/skos/core#prefLabel> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		# sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '16'
@@ -232,7 +234,7 @@ export const basicAgendaShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> 
 		lblodBesluit:maturiteitsniveau "Bonusniveau" ;
 		sh:description "Naam van het werkingsgebied." ;
 		sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#langString> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '18'
@@ -241,7 +243,7 @@ export const basicAgendaShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> 
 		sh:name "werkingsgebiedNiveau" ;
 		sh:description "Niveau (gemeente, provincie, gewest...) van het gebied waarbinnen de bestuurseenheid bepaalde verantwoordelijkheden heeft waarbinnen het bestuurshandelingen kan stellen." ;
 		sh:path <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#langString> ;
 		sh:minCount 0 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '19'

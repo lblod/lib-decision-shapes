@@ -192,6 +192,7 @@ export const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#>
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
         sh:minCount 0 ;
 		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '17'
 	] ;
 	sh:property [
@@ -212,6 +213,7 @@ export const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#>
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '20'
 	] ;
   sh:property [
@@ -266,6 +268,7 @@ export const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#>
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
         sh:minCount 0 ;
 		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '23'
 	] ;
     sh:property [
@@ -286,6 +289,7 @@ export const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#>
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
         sh:minCount 0 ;
 		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '25'
 	] ;
     sh:property [
@@ -295,6 +299,7 @@ export const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#>
 		sh:path <http://data.europa.eu/eli/ontology#title> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '26'
 	] ;
 	sh:property [
@@ -348,6 +353,7 @@ export const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#>
 # 		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ; # see https://github.com/rdfjs/N3.js/issues/252
  		sh:minCount 1 ;
  		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '31'
  	] ;
 	sh:property [
@@ -358,6 +364,7 @@ export const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#>
 # 		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ; see https://github.com/rdfjs/N3.js/issues/252
  		sh:minCount 1 ;
  		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '32'
  	] ;
  	sh:closed false .
@@ -394,7 +401,7 @@ export const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#>
 		lblodBesluit:maturiteitsniveau "Bonusniveau" ;
 		sh:description "Naam van de bestuursorgaan." ;
 		sh:path <http://www.w3.org/2004/02/skos/core#prefLabel> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		# sh:datatype <http://www.w3.org/2001/XMLSchema#langString> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '35'
@@ -428,7 +435,7 @@ export const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#>
 		lblodBesluit:maturiteitsniveau "Bonusniveau" ;
 		sh:description "Naam van de bestuurseenheid." ;
 		sh:path <http://www.w3.org/2004/02/skos/core#prefLabel> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		# sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '38'
@@ -452,7 +459,7 @@ export const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#>
 		lblodBesluit:maturiteitsniveau "Bonusniveau" ;
 		sh:description "Naam van het werkingsgebied." ;
 		sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#langString> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '40'
@@ -461,7 +468,7 @@ export const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#>
 		sh:name "werkingsgebiedNiveau" ;
 		sh:description "Niveau (gemeente, provincie, gewest...) van het gebied waarbinnen de bestuurseenheid bepaalde verantwoordelijkheden heeft waarbinnen het bestuurshandelingen kan stellen." ;
 		sh:path <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#langString> ;
 		sh:minCount 0 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '41'

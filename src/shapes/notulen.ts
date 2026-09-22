@@ -205,6 +205,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
         sh:minCount 0 ;
 		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '18'
 	] ;
 	sh:property [
@@ -225,6 +226,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '20'
 	] ;
   sh:property [
@@ -342,6 +344,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
         sh:minCount 0 ;
 		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '30'
 	] ;
     sh:property [
@@ -351,6 +354,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:path <http://www.w3.org/ns/prov#value> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '31'
 	] ;
     sh:property [
@@ -371,6 +375,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
         sh:minCount 0 ;
 		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '33'
 	] ;
     sh:property [
@@ -380,6 +385,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:path <http://data.europa.eu/eli/ontology#title> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '34'
 	] ;
 	sh:property [
@@ -387,7 +393,8 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         lblodBesluit:maturiteitsniveau "Niveau 1" ;
 		sh:description "De taal van de verschijningsvorm." ;
 		sh:path <http://data.europa.eu/eli/ontology#language> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		# sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:nodeKind sh:IRI ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 		qb:codeList <http://publications.europa.eu/mdr/authority/language/index.html> ;
@@ -405,7 +412,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:name "citeert" ;
 		sh:description "Een citatie in de wettelijke tekst. Dit omvat zowel woordelijke citaten als citaten in verwijzingen." ;
 		sh:path <http://data.europa.eu/eli/ontology#cites> ;
-		sh:class <http://data.europa.eu/eli/ontology#LegalExpression> ;
+		sh:nodeKind sh:IRI ;
         sh:minCount 0 ;
 		lblodBesluit:usageNote '37'
 	] ;
@@ -417,6 +424,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '38'
 	] ;
 	sh:property [
@@ -616,6 +624,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 # 		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ; # see https://github.com/rdfjs/N3.js/issues/252
  		sh:minCount 1 ;
  		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '51	'
  	] ;
  	sh:property [
@@ -626,6 +635,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 # 		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ; see https://github.com/rdfjs/N3.js/issues/252
  		sh:minCount 1 ;
  		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '52'
  	] ;
  	sh:closed false .
@@ -641,6 +651,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
  		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
  		sh:minCount 1 ;
  		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '53'
  	] ;
     sh:property [
@@ -651,6 +662,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '54'
 	] ;
     sh:property [
@@ -660,6 +672,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:path <http://data.europa.eu/eli/ontology#title> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '55'
 	] ;
 	sh:property [
@@ -667,7 +680,8 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         lblodBesluit:maturiteitsniveau "Niveau 3" ;
 		sh:description "De taal van de verschijningsvorm." ;
 		sh:path <http://data.europa.eu/eli/ontology#language> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		# sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:nodeKind sh:IRI ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 		qb:codeList <http://publications.europa.eu/mdr/authority/language/index.html> ;
@@ -697,7 +711,8 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		lblodBesluit:maturiteitsniveau "Bonusniveau" ;
 		sh:description "Het type bestuursorgaan." ;
 		sh:path <http://www.w3.org/ns/org#classification> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		# sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:nodeKind sh:IRI ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '58'
@@ -707,7 +722,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		lblodBesluit:maturiteitsniveau "Bonusniveau" ;
 		sh:description "Naam van de bestuursorgaan." ;
 		sh:path <http://www.w3.org/2004/02/skos/core#prefLabel> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		# sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		lblodBesluit:usageNote '59'
 	] ;
@@ -730,7 +745,8 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:name "classificatie" ;
 		sh:description "Classificatie van de bestuurseenheid." ;
 		sh:path <http://data.vlaanderen.be/ns/besluit#classificatie> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		# sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:nodeKind sh:IRI ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '61'
@@ -740,7 +756,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		lblodBesluit:maturiteitsniveau "Bonusniveau" ;
 		sh:description "Naam van de bestuurseenheid." ;
 		sh:path <http://www.w3.org/2004/02/skos/core#prefLabel> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		# sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		lblodBesluit:usageNote '62'
 	] ;
@@ -763,7 +779,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		lblodBesluit:maturiteitsniveau "Bonusniveau" ;
 		sh:description "Naam van het werkingsgebied." ;
 		sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		# sh:datatype <http://www.w3.org/2001/XMLSchema#langString> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '64'
@@ -772,7 +788,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:name "werkingsgebiedNiveau" ;
 		sh:description "Niveau (gemeente, provincie, gewest...) van het gebied waarbinnen de bestuurseenheid bepaalde verantwoordelijkheden heeft waarbinnen het bestuurshandelingen kan stellen." ;
 		sh:path <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau> ;
-		# sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		# sh:datatype <http://www.w3.org/2001/XMLSchema#langString> ;
 		sh:minCount 0 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '65'
