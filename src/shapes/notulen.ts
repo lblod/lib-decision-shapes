@@ -1,6 +1,7 @@
 export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 @prefix qb:      <http://purl.org/linked-data/cube#> .
 @prefix lblodBesluit:	<http://lblod.data.gift/vocabularies/besluit/> .
+@prefix ext:	<http://mu.semte.ch/vocabularies/ext/> .
 
 <https://data.vlaanderen.be/shacl/besluit-publicatie#DocumentShape>
 	a sh:NodeShape ;
@@ -24,6 +25,23 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 <https://data.vlaanderen.be/shacl/besluit-publicatie#ZittingShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/besluit#Zitting> ;
+	sh:sparql [
+		lblodBesluit:maturiteitsniveau "Niveau 2" ;
+		sh:select """
+			PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+			select DISTINCT $this ?path ?value
+			where {
+				$this ?path ?mandataris .
+
+				FILTER (?path IN (besluit:heeftVoorzitter, besluit:heeftSecretaris, besluit:heeftAanwezigeBijStart, besluit:heeftAfwezigeBijStart))
+				FILTER isBlank(?mandataris)
+
+				BIND ("Mandataris gevonden die geen URI heeft" as ?value)
+			}
+		""" ;
+		sh:message 'Er zijn mandatarissen gedetecteerd die geen URI hebben.'
+	] ;
   	sh:property [
 		sh:name "behandelt" ;
         lblodBesluit:maturiteitsniveau "Niveau 1" ;
@@ -114,7 +132,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         lblodBesluit:maturiteitsniveau "Niveau 1" ;
 		sh:description "Locatie waar de zitting plaatsvindt. Doorgaans is dit een zaal in een gebouw." ;
 		sh:path <http://www.w3.org/ns/prov#atLocation> ;
-		sh:class <http://www.w3.org/ns/prov#Location> ;
+		# sh:class <http://www.w3.org/ns/prov#Location> ;
         sh:minCount 0 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '12'
@@ -124,7 +142,6 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         lblodBesluit:maturiteitsniveau "Niveau 3" ;
         sh:description "Een mandataris (van het bestuursorsgaan die de zitting hield) die aanwezig was bij de start van de zitting." ;
         sh:path <http://data.vlaanderen.be/ns/besluit#heeftAanwezigeBijStart> ;
-        sh:class <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
         sh:minCount 0 ;
 		lblodBesluit:usageNote '13'
     ] ;
@@ -132,7 +149,6 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         sh:name "heeftAfwezigeBijStart" ;
         sh:description "Een mandataris (van het bestuursorsgaan die de zitting hield) die afwezig was bij de start van de zitting." ;
         sh:path <http://mu.semte.ch/vocabularies/ext/heeftAfwezigeBijStart> ;
-        sh:class <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
         sh:minCount 0 ;
 		lblodBesluit:usageNote '14'
     ] ;
@@ -141,7 +157,6 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         lblodBesluit:maturiteitsniveau "Niveau 3" ;
         sh:description "De mandataris die de rol als voorzitter heeft gedurende de zitting." ;
         sh:path <http://data.vlaanderen.be/ns/besluit#heeftVoorzitter> ;
-        sh:class <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
 		lblodBesluit:usageNote '15'
@@ -151,7 +166,6 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         lblodBesluit:maturiteitsniveau "Niveau 3" ;
         sh:description "De mandataris die de rol van secretaris heeft gedurende de zitting." ;
         sh:path <http://data.vlaanderen.be/ns/besluit#heeftSecretaris> ;
-        sh:class <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
 		lblodBesluit:usageNote '16'
@@ -192,6 +206,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
         sh:minCount 0 ;
 		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '18'
 	] ;
 	sh:property [
@@ -212,6 +227,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '20'
 	] ;
   sh:property [
@@ -226,6 +242,23 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 <https://data.vlaanderen.be/shacl/besluit-publicatie#BehandelingVanAgendapuntShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt> ;
+	sh:sparql [
+		lblodBesluit:maturiteitsniveau "Niveau 2" ;
+		sh:select """
+			PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+			select DISTINCT $this ?path ?value
+			where {
+				$this ?path ?mandataris .
+
+				FILTER (?path IN (besluit:heeftAanwezige, besluit:heeftVoorzitter, besluit:heeftSecretaris))
+				FILTER isBlank(?mandataris)
+
+				BIND ("Mandataris gevonden die geen URI heeft" as ?value)
+			}
+		""" ;
+		sh:message 'Er zijn mandatarissen gedetecteerd die geen URI hebben.'
+	] ;
 	sh:property [
 		sh:name "heeftOnderwerp" ;
         lblodBesluit:maturiteitsniveau "Niveau 1" ;
@@ -269,7 +302,6 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         lblodBesluit:maturiteitsniveau "Niveau 1" ;
 		sh:description "Een mandataris (van het orgaan dat de zitting houdt) die aanwezig was tijdens (een deel van) de behandeling." ;
 		sh:path <http://data.vlaanderen.be/ns/besluit#heeftAanwezige> ;
-		sh:class <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
 		sh:minCount 1 ;
 		lblodBesluit:usageNote '26'
 	] ;
@@ -278,7 +310,6 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         lblodBesluit:maturiteitsniveau "Niveau 1" ;
 		sh:description "De mandataris die de rol als voorzitter heeft gedurende de behandeling van het agendapunt." ;
 		sh:path <http://data.vlaanderen.be/ns/besluit#heeftVoorzitter> ;
-		sh:class <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
         sh:minCount 0 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '27'
@@ -288,7 +319,6 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         lblodBesluit:maturiteitsniveau "Niveau 1" ;
 		sh:description "De mandataris die de rol van secretaris heeft gedurende de behandeling van het agendapunt." ;
 		sh:path <http://data.vlaanderen.be/ns/besluit#heeftSecretaris> ;
-		sh:class <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
         sh:minCount 0 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '28'
@@ -315,6 +345,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
         sh:minCount 0 ;
 		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '30'
 	] ;
     sh:property [
@@ -322,9 +353,17 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         lblodBesluit:maturiteitsniveau "Niveau 1" ;
 		sh:description "De beschrijving van de beoogde rechtsgevolgen, het zogenaamde beschikkend gedeelte." ;
 		sh:path <http://www.w3.org/ns/prov#value> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:or (
+			[
+				sh:datatype <http://www.w3.org/2001/XMLSchema#string>;
+			]
+			[
+				sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>;
+			]
+		);
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '31'
 	] ;
     sh:property [
@@ -345,6 +384,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
         sh:minCount 0 ;
 		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '33'
 	] ;
     sh:property [
@@ -354,6 +394,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:path <http://data.europa.eu/eli/ontology#title> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '34'
 	] ;
 	sh:property [
@@ -361,7 +402,8 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         lblodBesluit:maturiteitsniveau "Niveau 1" ;
 		sh:description "De taal van de verschijningsvorm." ;
 		sh:path <http://data.europa.eu/eli/ontology#language> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		# sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:nodeKind sh:IRI ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 		qb:codeList <http://publications.europa.eu/mdr/authority/language/index.html> ;
@@ -379,7 +421,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:name "citeert" ;
 		sh:description "Een citatie in de wettelijke tekst. Dit omvat zowel woordelijke citaten als citaten in verwijzingen." ;
 		sh:path <http://data.europa.eu/eli/ontology#cites> ;
-		sh:class <http://data.europa.eu/eli/ontology#LegalExpression> ;
+		sh:nodeKind sh:IRI ;
         sh:minCount 0 ;
 		lblodBesluit:usageNote '37'
 	] ;
@@ -391,6 +433,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '38'
 	] ;
 	sh:property [
@@ -426,10 +469,11 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
  	a sh:NodeShape ;
  	sh:targetClass <http://data.vlaanderen.be/ns/besluit#Stemming> ;
 	sh:sparql [
+		lblodBesluit:maturiteitsniveau "Niveau 2" ;
 		sh:select """
 			PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 
-			select DISTINCT ($this as ?this) ?path ?value
+			select DISTINCT $this ?path ?value
 			where {
 				$this ?path ?mandataris .
 
@@ -446,14 +490,14 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         lblodBesluit:maturiteitsniveau "Niveau 1" ;
  		sh:description "Een mandataris die als onthouder heeft gestemd op het onderwerp van de stemming." ;
  		sh:path <http://data.vlaanderen.be/ns/besluit#heeftOnthouder> ;
- 		sh:class <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
         sh:minCount 0 ;
 		lblodBesluit:usageNote '42' ;
 		sh:sparql [
+			lblodBesluit:maturiteitsniveau "Niveau 2" ;
 			sh:select """
 				PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>			
 
-				select ($this as ?this) ?value			
+				select $this ?value			
 				where {
 				{
 					select (count(distinct ?onthouder) as ?onthouderCount) {
@@ -474,7 +518,6 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         lblodBesluit:maturiteitsniveau "Niveau 1" ;
  		sh:description "Een mandataris (van het orgaan dat de zitting houdt) die aanwezig was tijdens de stemming." ;
  		sh:path <http://data.vlaanderen.be/ns/besluit#heeftAanwezige> ;
- 		sh:class <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
  		sh:minCount 1 ;
 		lblodBesluit:usageNote '43'
  	] ;
@@ -483,7 +526,6 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         lblodBesluit:maturiteitsniveau "Niveau 1" ;
  		sh:description "Een mandataris die deelneemt aan de stemming." ;
  		sh:path <http://data.vlaanderen.be/ns/besluit#heeftStemmer> ;
- 		sh:class <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
  		sh:minCount 0 ;
 		lblodBesluit:usageNote '44'
  	] ;
@@ -492,14 +534,14 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         lblodBesluit:maturiteitsniveau "Niveau 1" ;
  		sh:description "Een mandataris die als tegenstander heeft gestemd op het onderwerp van de stemming." ;
  		sh:path <http://data.vlaanderen.be/ns/besluit#heeftTegenstander> ;
- 		sh:class <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
         sh:minCount 0 ;
 		lblodBesluit:usageNote '45' ;
 		sh:sparql [
+			lblodBesluit:maturiteitsniveau "Niveau 2" ;
 			sh:select """
 				PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>			
 
-				select ($this as ?this) ?value			
+				select $this ?value			
 				where {
 				{
 					select (count(distinct ?tegenstander) as ?tegenstanderCount) {
@@ -520,14 +562,14 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         lblodBesluit:maturiteitsniveau "Niveau 1" ;
  		sh:description "Een mandataris die als voorstander heeft gestemd op het onderwerp van de stemming." ;
  		sh:path <http://data.vlaanderen.be/ns/besluit#heeftVoorstander> ;
- 		sh:class <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
         sh:minCount 0 ;
 		lblodBesluit:usageNote '46' ;
 		sh:sparql [
+			lblodBesluit:maturiteitsniveau "Niveau 2" ;
 			sh:select """
 				PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>			
 
-				select ($this as ?this) ?value			
+				select $this ?value			
 				where {
 				{
 					select (count(distinct ?voorstander) as ?voorstanderCount) {
@@ -591,6 +633,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 # 		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ; # see https://github.com/rdfjs/N3.js/issues/252
  		sh:minCount 1 ;
  		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '51	'
  	] ;
  	sh:property [
@@ -601,6 +644,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 # 		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ; see https://github.com/rdfjs/N3.js/issues/252
  		sh:minCount 1 ;
  		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '52'
  	] ;
  	sh:closed false .
@@ -616,6 +660,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
  		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
  		sh:minCount 1 ;
  		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '53'
  	] ;
     sh:property [
@@ -626,6 +671,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '54'
 	] ;
     sh:property [
@@ -635,6 +681,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:path <http://data.europa.eu/eli/ontology#title> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
+		sh:pattern '\\\\S' ;
 		lblodBesluit:usageNote '55'
 	] ;
 	sh:property [
@@ -642,7 +689,8 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
         lblodBesluit:maturiteitsniveau "Niveau 3" ;
 		sh:description "De taal van de verschijningsvorm." ;
 		sh:path <http://data.europa.eu/eli/ontology#language> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		# sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:nodeKind sh:IRI ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 		qb:codeList <http://publications.europa.eu/mdr/authority/language/index.html> ;
@@ -652,7 +700,20 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 
 <https://data.vlaanderen.be/shacl/mandatendatabank#Bestuursorgaan(inbestuursperiode)Shape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+	ext:targetClass <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+	sh:target [
+        a sh:SPARQLTarget ;
+        sh:select """
+			PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+			PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+
+            SELECT ?this
+            WHERE {
+                ?this a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+					mandaat:isTijdspecialisatieVan ?bestuursorgaan .                
+            }
+        """ ;
+    ] ;
 	sh:property [
 		sh:name "isTijdspecialisatieVan (mandaat)" ;
 		sh:description "Duidt de bronentiteit aan waarvan deze entiteit een tijdsgebonden specialisatie is. De specialisatie stelt de bron voor gedurende een bepaalde periode." ;
@@ -666,13 +727,26 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 
 <https://data.vlaanderen.be/shacl/besluit-publicatie#BestuursorgaanShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+	ext:targetClass <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+	sh:target [
+        a sh:SPARQLTarget ;
+        sh:select """
+			PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+            SELECT ?this
+            WHERE {
+                ?this a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+					besluit:bestuurt ?bestuurseenheid .                
+            }
+        """ ;
+    ] ;
 	sh:property [
 		sh:name "classificatie" ;
 		lblodBesluit:maturiteitsniveau "Bonusniveau" ;
 		sh:description "Het type bestuursorgaan." ;
 		sh:path <http://www.w3.org/ns/org#classification> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		# sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:nodeKind sh:IRI ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '58'
@@ -682,7 +756,14 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		lblodBesluit:maturiteitsniveau "Bonusniveau" ;
 		sh:description "Naam van de bestuursorgaan." ;
 		sh:path <http://www.w3.org/2004/02/skos/core#prefLabel> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:or (
+			[
+				sh:datatype <http://www.w3.org/2001/XMLSchema#string>;
+			]
+			[
+				sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>;
+			]
+		);
 		sh:minCount 1 ;
 		lblodBesluit:usageNote '59'
 	] ;
@@ -705,7 +786,8 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:name "classificatie" ;
 		sh:description "Classificatie van de bestuurseenheid." ;
 		sh:path <http://data.vlaanderen.be/ns/besluit#classificatie> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		# sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:nodeKind sh:IRI ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '61'
@@ -715,7 +797,14 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		lblodBesluit:maturiteitsniveau "Bonusniveau" ;
 		sh:description "Naam van de bestuurseenheid." ;
 		sh:path <http://www.w3.org/2004/02/skos/core#prefLabel> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:or (
+			[
+				sh:datatype <http://www.w3.org/2001/XMLSchema#string>;
+			]
+			[
+				sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>;
+			]
+		);
 		sh:minCount 1 ;
 		lblodBesluit:usageNote '62'
 	] ;
@@ -723,7 +812,7 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:name "werkingsgebied" ;
 		sh:description "Geografische gebied waarbinnen de bestuurseenheid bepaalde verantwoordelijkheden heeft waarbinnen het bestuurshandelingen kan stellen." ;
 		sh:path <http://data.vlaanderen.be/ns/besluit#werkingsgebied> ;
-		sh:class <http://www.w3.org/ns/prov#Location> ;
+		# sh:class <http://www.w3.org/ns/prov#Location> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '63'
@@ -738,7 +827,14 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		lblodBesluit:maturiteitsniveau "Bonusniveau" ;
 		sh:description "Naam van het werkingsgebied." ;
 		sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:or (
+			[
+				sh:datatype <http://www.w3.org/2001/XMLSchema#string>;
+			]
+			[
+				sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>;
+			]
+		);
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '64'
@@ -747,7 +843,14 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 		sh:name "werkingsgebiedNiveau" ;
 		sh:description "Niveau (gemeente, provincie, gewest...) van het gebied waarbinnen de bestuurseenheid bepaalde verantwoordelijkheden heeft waarbinnen het bestuurshandelingen kan stellen." ;
 		sh:path <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:or (
+			[
+				sh:datatype <http://www.w3.org/2001/XMLSchema#string>;
+			]
+			[
+				sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>;
+			]
+		);
 		sh:minCount 0 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '65'
