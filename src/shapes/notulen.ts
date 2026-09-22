@@ -1,6 +1,7 @@
 export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 @prefix qb:      <http://purl.org/linked-data/cube#> .
 @prefix lblodBesluit:	<http://lblod.data.gift/vocabularies/besluit/> .
+@prefix ext:	<http://mu.semte.ch/vocabularies/ext/> .
 
 <https://data.vlaanderen.be/shacl/besluit-publicatie#DocumentShape>
 	a sh:NodeShape ;
@@ -691,7 +692,22 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 
 <https://data.vlaanderen.be/shacl/mandatendatabank#Bestuursorgaan(inbestuursperiode)Shape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+	ext:targetClass <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+	sh:target [
+        a sh:SPARQLTarget ;
+        sh:select """
+			PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+			PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+
+            SELECT ?this
+            WHERE {
+                ?this a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+					mandaat:isTijdspecialisatieVan ?bestuursorgaan .
+                
+				?zitting besluit:isGehoudenDoor ?this .
+            }
+        """ ;
+    ] ;
 	sh:property [
 		sh:name "isTijdspecialisatieVan (mandaat)" ;
 		sh:description "Duidt de bronentiteit aan waarvan deze entiteit een tijdsgebonden specialisatie is. De specialisatie stelt de bron voor gedurende een bepaalde periode." ;
@@ -705,7 +721,19 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 
 <https://data.vlaanderen.be/shacl/besluit-publicatie#BestuursorgaanShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+	ext:targetClass <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+	sh:target [
+        a sh:SPARQLTarget ;
+        sh:select """
+			PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+            SELECT ?this
+            WHERE {
+                ?this a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+					besluit:bestuurt ?bestuurseenheid .                
+            }
+        """ ;
+    ] ;
 	sh:property [
 		sh:name "classificatie" ;
 		lblodBesluit:maturiteitsniveau "Bonusniveau" ;
