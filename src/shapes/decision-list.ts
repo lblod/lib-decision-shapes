@@ -425,7 +425,14 @@ export const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#>
 		lblodBesluit:maturiteitsniveau "Bonusniveau" ;
 		sh:description "Naam van de bestuursorgaan." ;
 		sh:path <http://www.w3.org/2004/02/skos/core#prefLabel> ;
-		# sh:datatype <http://www.w3.org/2001/XMLSchema#langString> ;
+		sh:or (
+			[
+				sh:datatype <http://www.w3.org/2001/XMLSchema#string>;
+			]
+			[
+				sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>;
+			]
+		);
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '35'
@@ -459,7 +466,14 @@ export const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#>
 		lblodBesluit:maturiteitsniveau "Bonusniveau" ;
 		sh:description "Naam van de bestuurseenheid." ;
 		sh:path <http://www.w3.org/2004/02/skos/core#prefLabel> ;
-		# sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:or (
+			[
+				sh:datatype <http://www.w3.org/2001/XMLSchema#string>;
+			]
+			[
+				sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>;
+			]
+		);
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 		lblodBesluit:usageNote '38'
