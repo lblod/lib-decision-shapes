@@ -499,12 +499,17 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 
 				select $this ?value			
 				where {
-				{
-					select (count(distinct ?onthouder) as ?onthouderCount) {
-						$this besluit:heeftOnthouder ?onthouder .
-					}
-				}
 				$this besluit:aantalOnthouders ?aantalOnthouders .
+				OPTIONAL {
+					{
+						select ?stemming (count(distinct ?onthouder) as ?onthouderTotal) {
+							?stemming besluit:heeftOnthouder ?onthouder .
+						}
+						group by ?stemming
+					}
+					FILTER (?stemming = $this)
+				}
+				BIND(COALESCE(?onthouderTotal, 0) as ?onthouderCount)
 				FILTER (?onthouderCount != ?aantalOnthouders)
 				
 				BIND(concat("Aantal gevonden onthouders (", str(?onthouderCount), ") is niet gelijk aan het opgegeven aantalOnthouders (", str(?aantalOnthouders), "). ") as ?value)
@@ -543,12 +548,17 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 
 				select $this ?value			
 				where {
-				{
-					select (count(distinct ?tegenstander) as ?tegenstanderCount) {
-						$this besluit:heeftTegenstander ?tegenstander .
-					}
-				}
 				$this besluit:aantalTegenstanders ?aantalTegenstanders .
+				OPTIONAL {
+					{
+						select ?stemming (count(distinct ?tegenstander) as ?tegenstanderTotal) {
+							?stemming besluit:heeftTegenstander ?tegenstander .
+						}
+						group by ?stemming
+					}
+					FILTER (?stemming = $this)
+				}
+				BIND(COALESCE(?tegenstanderTotal, 0) as ?tegenstanderCount)
 				FILTER (?tegenstanderCount != ?aantalTegenstanders)
 				
 				BIND(concat("Aantal gevonden tegenstanders (", str(?tegenstanderCount), ") is niet gelijk aan het opgegeven aantalTegenstanders (", str(?aantalTegenstanders), "). ") as ?value)
@@ -571,12 +581,17 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 
 				select $this ?value			
 				where {
-				{
-					select (count(distinct ?voorstander) as ?voorstanderCount) {
-						$this besluit:heeftVoorstander ?voorstander .
-					}
-				}
 				$this besluit:aantalVoorstanders ?aantalVoorstanders .
+				OPTIONAL {
+					{
+						select ?stemming (count(distinct ?voorstander) as ?voorstanderTotal) {
+							?stemming besluit:heeftVoorstander ?voorstander .
+						}
+						group by ?stemming
+					}
+					FILTER (?stemming = $this)
+				}
+				BIND(COALESCE(?voorstanderTotal, 0) as ?voorstanderCount)
 				FILTER (?voorstanderCount != ?aantalVoorstanders)
 				
 				BIND(concat("Aantal gevonden voorstanders (", str(?voorstanderCount), ") is niet gelijk aan het opgegeven aantalVoorstanders (", str(?aantalVoorstanders), "). ") as ?value)

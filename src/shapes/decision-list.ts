@@ -1,6 +1,7 @@
 export const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 @prefix qb:      <http://purl.org/linked-data/cube#> .
 @prefix lblodBesluit:	<http://lblod.data.gift/vocabularies/besluit/> .
+@prefix ext:	<http://mu.semte.ch/vocabularies/ext/> .
 
 <https://data.vlaanderen.be/shacl/besluit-publicatie#DocumentShape>
 	a sh:NodeShape ;
@@ -383,7 +384,7 @@ export const decisionListShape = `@prefix sh:      <http://www.w3.org/ns/shacl#>
                 ?this a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
 					mandaat:isTijdspecialisatieVan ?bestuursorgaan .                
             }
-        """ ;
+        """ ] ;
 	sh:property [
 		sh:name "isTijdspecialisatieVan (mandaat)" ;
 		sh:description "Duidt de bronentiteit aan waarvan deze entiteit een tijdsgebonden specialisatie is. De specialisatie stelt de bron voor gedurende een bepaalde periode." ;
