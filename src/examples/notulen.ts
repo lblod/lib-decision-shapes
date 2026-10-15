@@ -31,7 +31,7 @@ export const notulenExample = `<!DOCTYPE html>
                 <span property="org:classification" resource="http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000005" id="58"></span>
                 <span property="skos:prefLabel" id="59">Gemeenteraad Kortenberg</span>
                 <div property="besluit:bestuurt" resource="http://data.lblod.info/id/bestuurseenheden/e580b3ee33ff28d93f803e7f70cdb1d99bf6ae9d56b0f630fd7b6837adf8cd4c" typeof="besluit:Bestuurseenheid" id="60">
-                    <span property="org:classification" resource="http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001" id="15"></span>
+                    <span property="org:classification" resource="http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001"></span>
                     <span property="skos:prefLabel" content="Kortenberg" id="61"></span>
                     <div property="besluit:werkingsgebied" resource="http://data.lblod.info/id/werkingsgebieden/0d89527de8beb0b0799fb935e1f2a7c42ef4df4d9c064b709a1ddfca823b3d97" typeof="prov:Location" id="62">
                         <span property="rdfs:label" content="Kortenberg" id="63"></span>
@@ -97,7 +97,7 @@ content="2024-01-08T19:00:31.586Z">
         <span
         property="http://data.vlaanderen.be/ns/besluit#geplandeStart"
         content="2024-01-08T19:00:31.586Z"
-        datatype="http://www.w3.org/2001/XMLSchema#dateTime" id=""6></span>
+        datatype="http://www.w3.org/2001/XMLSchema#dateTime" id="6"></span>
         <span
         property="http://www.w3.org/ns/prov#startedAtTime"
         content="2024-01-08T19:02:31.586Z"
@@ -513,7 +513,7 @@ content="Demaertelaere">Demaertelaere
     <strong>Voorzitter:</strong>
     <span property="besluit:heeftVoorzitter"
     typeof="http://data.vlaanderen.be/ns/mandaat#Mandataris"
-    resource="http://data.lblod.info/id/mandatarissen/90526e3f-60cb-4a68-b7c3-f3452e986678" id="27">
+    resource="http://data.lblod.info/id/mandatarissen/90526e3f-60cb-4a68-b7c3-f3452e986678">
     <span property="mandaat:isBestuurlijkeAliasVan"
     resource="http://data.lblod.info/id/personen/7e0f5343fd2762ec57e871a0f47315f8cb6f98a1a69ef11bdbaf256a54ef7d46">
     <span property="persoon:gebruikteVoornaam">Ann</span>
@@ -526,7 +526,7 @@ content="Demaertelaere">Demaertelaere
     <strong>Secretaris:</strong>
     <span property="besluit:heeftSecretaris"
     typeof="http://data.vlaanderen.be/ns/mandaat#Mandataris"
-    resource="http://data.lblod.info/id/functionarissen/5D4945AEA3ACB60008000397" id="28">
+    resource="http://data.lblod.info/id/functionarissen/5D4945AEA3ACB60008000397">
     <span
     resource="http://data.lblod.info/id/personen/5D494598A3ACB60008000394"
     property="mandaat:isBestuurlijkeAliasVan">
