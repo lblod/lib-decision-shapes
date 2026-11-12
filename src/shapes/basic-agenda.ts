@@ -8,9 +8,11 @@ export const basicAgendaShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> 
 	sh:targetClass <http://xmlns.com/foaf/0.1/Document> ;
   	sh:property [
 		sh:name "documenttype" ;
-		sh:description "Type van het besluit. Concept uit een van volgende concept schemes: https://data.vlaanderen.be/id/conceptscheme/BesluitType https://data.vlaanderen.be/id/conceptscheme/BesluitDocumentType" ;
+		sh:description "Type van het document. Moet het concept Agenda (https://data.vlaanderen.be/id/concept/BesluitDocumentType/13fefad6-a9d6-4025-83b5-e4cbee3a8965) uit https://data.vlaanderen.be/id/conceptscheme/BesluitDocumentType bevatten. Optioneel ook een concept uit https://data.vlaanderen.be/id/conceptscheme/BesluitType." ;
 		sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
 		sh:minCount 1 ;
+		sh:hasValue <https://data.vlaanderen.be/id/concept/BesluitDocumentType/13fefad6-a9d6-4025-83b5-e4cbee3a8965> ;
+		sh:message "Het document heeft niet het type Agenda (https://data.vlaanderen.be/id/concept/BesluitDocumentType/13fefad6-a9d6-4025-83b5-e4cbee3a8965)." ;
 		lblodBesluit:usageNote '1'
 	] ;
     sh:property [
