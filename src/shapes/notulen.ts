@@ -3,24 +3,36 @@ export const notulenShape = `@prefix sh:      <http://www.w3.org/ns/shacl#> .
 @prefix lblodBesluit:	<http://lblod.data.gift/vocabularies/besluit/> .
 @prefix ext:	<http://mu.semte.ch/vocabularies/ext/> .
 
+@prefix rdf:          <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:          <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf:         <http://xmlns.com/foaf/0.1/> .
+
 <https://data.vlaanderen.be/shacl/besluit-publicatie#DocumentShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://xmlns.com/foaf/0.1/Document> ;
-  	sh:property [
-		sh:name "documenttype" ;
-		sh:description "Type van het besluit. Concept uit een van volgende concept schemes: https://data.vlaanderen.be/id/conceptscheme/BesluitType https://data.vlaanderen.be/id/conceptscheme/BesluitDocumentType" ;
-		sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
-		sh:minCount 1 ;
-		lblodBesluit:usageNote '1'
-	] ;
+    a sh:NodeShape ;
+    sh:targetClass foaf:Document ;
     sh:property [
-		sh:name "publicatiedatum" ;
-		sh:description "De officiële publicatiedatum van het besluit." ;
-		sh:path <http://data.europa.eu/eli/ontology#date_publication> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
-		sh:maxCount 1 ;
-		lblodBesluit:usageNote '2'
-	] .
+        sh:name "documenttype" ;
+        sh:description "Type van het document. Moet het concept Notulen (https://data.vlaanderen.be/id/concept/BesluitDocumentType/8e791b27-7600-4577-b24e-c7c29e0eb773) of Uittreksel (https://data.vlaanderen.be/id/concept/BesluitDocumentType/9d5bfaca-bbf2-49dd-a830-769f91a6377b) uit https://data.vlaanderen.be/id/conceptscheme/BesluitDocumentType bevatten. Optioneel ook een concept uit https://data.vlaanderen.be/id/conceptscheme/BesluitType." ;
+        sh:path rdf:type ;
+        sh:minCount 1 ;
+        sh:qualifiedValueShape [
+            sh:in (
+                <https://data.vlaanderen.be/id/concept/BesluitDocumentType/8e791b27-7600-4577-b24e-c7c29e0eb773>
+                <https://data.vlaanderen.be/id/concept/BesluitDocumentType/9d5bfaca-bbf2-49dd-a830-769f91a6377b>
+            )
+        ] ;
+        sh:qualifiedMinCount 1 ;
+        sh:message "Het document heeft niet het type Notulen of Uittreksel uit het concept scheme BesluitDocumentType." ;
+        lblodBesluit:usageNote '1'
+    ] ;
+    sh:property [
+        sh:name "publicatiedatum" ;
+        sh:description "De officiële publicatiedatum van het besluit." ;
+        sh:path <http://data.europa.eu/eli/ontology#date_publication> ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+        lblodBesluit:usageNote '2'
+    ] .
 
 <https://data.vlaanderen.be/shacl/besluit-publicatie#ZittingShape>
 	a sh:NodeShape ;
